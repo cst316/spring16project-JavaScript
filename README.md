@@ -14,4 +14,8 @@ Your first steps should be to get your team set up with this code, ensure you ca
 Enjoy!
 Dr. Gary
 
+<<<<<<< HEAD
 P.S. Hi. This is Jacqueline.
+=======
+Casey Vanderham
+>>>>>>> origin/master
