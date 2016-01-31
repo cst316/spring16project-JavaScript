@@ -1,3 +1,8 @@
 #Build Number for ANT. Do not edit!
+<<<<<<< HEAD
 #Sun Jan 31 12:41:06 MST 2016
 build.number=39
+=======
+#Sun Jan 31 12:09:55 MST 2016
+build.number=46
+>>>>>>> origin/master
