@@ -1,12 +1,14 @@
+// Spanish replaced with english
 package net.sf.memoranda.util;
 
 import nu.xom.Element;
 
 public class PriorityQueue {
         
-        /* Cola de Prioridad implementada con Estructura de Datos Heap,
-         * para ordenar las anotaciones por prioridad 
-         */
+	
+		/* Priority Queue implementation with a Heap Data Structure
+		 * to order the annotations by priority
+		 */
         
         private Pair[] a;
         private int n;
