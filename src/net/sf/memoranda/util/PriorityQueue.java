@@ -7,8 +7,12 @@ public class PriorityQueue {
         
 	
 		/* Priority Queue implementation with a Heap Data Structure
-		 * to order the annotations by priority
+		 * to order the annotations by priority.
+		 * 
+		 * Still need to g
 		 */
+	
+	
         
         private Pair[] a;
         private int n;
@@ -17,6 +21,8 @@ public class PriorityQueue {
                 a = new Pair[size+2];
                 n = 0;
         }
+        
+        //Insert
         public void insertar(Pair x){
                 ++n;
                 a[n]=x;
@@ -28,6 +34,7 @@ public class PriorityQueue {
                 }
         }
         
+        //Extract
         public Element extraer(){
                 if(!this.Vacia()){
                         Element m = a[1].getElement();  
@@ -52,6 +59,7 @@ public class PriorityQueue {
                         return null;
         }
         
+        //Empty
         public boolean Vacia(){
                 return n==0;
         }
