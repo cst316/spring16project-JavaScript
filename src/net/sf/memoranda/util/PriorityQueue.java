@@ -9,7 +9,8 @@ public class PriorityQueue {
 		/* Priority Queue implementation with a Heap Data Structure
 		 * to order the annotations by priority.
 		 * 
-		 * Still need to g
+		 * Still need to change the method names here and where ever
+		 * this class is instanced.
 		 */
 	
 	
