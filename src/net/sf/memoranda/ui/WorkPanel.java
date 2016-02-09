@@ -32,6 +32,8 @@ public class WorkPanel extends JPanel {
 	CardLayout cardLayout1 = new CardLayout();
 
 	public JButton notesB = new JButton();
+	// pspB is a new button for the additonal feature
+	//public JButton pspB = new JButton();
 	public DailyItemsPanel dailyItemsPanel = new DailyItemsPanel(this);
 	public ResourcesPanel filesPanel = new ResourcesPanel();
 	public JButton agendaB = new JButton();
@@ -63,7 +65,6 @@ public class WorkPanel extends JPanel {
 		this.setLayout(borderLayout1);
 		toolBar.setOrientation(JToolBar.VERTICAL);
 		toolBar.setBackground(Color.white);
-
 		toolBar.setBorderPainted(false);
 		toolBar.setFloatable(false);
 		panel.setLayout(cardLayout1);
@@ -71,7 +72,6 @@ public class WorkPanel extends JPanel {
 		agendaB.setBackground(Color.white);
 		agendaB.setMaximumSize(new Dimension(60, 80));
 		agendaB.setMinimumSize(new Dimension(30, 30));
-
 		agendaB.setFont(new java.awt.Font("Dialog", 1, 10));
 		agendaB.setPreferredSize(new Dimension(50, 50));
 		agendaB.setBorderPainted(false);
@@ -97,7 +97,6 @@ public class WorkPanel extends JPanel {
 		eventsB.setBackground(Color.white);
 		eventsB.setMaximumSize(new Dimension(60, 80));
 		eventsB.setMinimumSize(new Dimension(30, 30));
-
 		eventsB.setFont(new java.awt.Font("Dialog", 1, 10));
 		eventsB.setPreferredSize(new Dimension(50, 50));
 		eventsB.setBorderPainted(false);
@@ -119,6 +118,35 @@ public class WorkPanel extends JPanel {
 		eventsB.setOpaque(false);
 		eventsB.setMargin(new Insets(0, 0, 0, 0));
 		//eventsB.setSelected(true);
+		
+		/*
+		pspB.setFont(new java.awt.Font("Dialog", 1,10));
+		pspB.setBackground(Color.white);
+		pspB.setBorder(null);
+		pspB.MaximumSize(new Dimension(60, 80));
+		pspB.setMinimumSize(new Dimension(30, 30));
+		pspB.setOpaque(false);
+		pspB.setPreferredSize(new Dimension(60, 50));
+		pspB.setBorderPainted(false);
+		pspB.setContentAreaFilled(false);
+		pspB.setFocusPainted(false);
+		pspB.setHorizontalTextPosition(SwingConstants.CENTER);
+		pspB.setVerticalAlignment(SwingConstants.TOP);
+		pspB.setVerticalTextPosition(SwingConstants.BOTTOM);
+		pspB.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pspB_actionPerformed(e);
+			}
+		});
+		pspB.setIcon(
+			new ImageIcon(
+				net.sf.memoranda.ui.AppFrame.class.getResource(
+					"resources/icons/psp_sm.png")));
+		pspB.setMargin(new Insets(0, 0, 0, 0));
+		pspB.setSelected(true);
+		//this.setPreferredSize(new Dimension(1073, 300));
+
+		 */
 
 		tasksB.setSelected(true);
 		tasksB.setFont(new java.awt.Font("Dialog", 1, 10));
@@ -198,6 +226,7 @@ public class WorkPanel extends JPanel {
 		filesB.setBackground(Color.white);
 		this.add(toolBar, BorderLayout.WEST);
 		this.add(panel, BorderLayout.CENTER);
+		
 		panel.add(dailyItemsPanel, "DAILYITEMS");
 		panel.add(filesPanel, "FILES");
 		toolBar.add(agendaB, null);
@@ -221,6 +250,9 @@ public class WorkPanel extends JPanel {
 		if (pan != null) {
 			if (pan.equals("NOTES"))
 				notesB_actionPerformed(null);
+			// pspB selection
+		//	else if (pan.equals("PSP"))
+		//		pspB_actionPerformed(null);
 			else if (pan.equals("TASKS"))
 				tasksB_actionPerformed(null);
 			else if (pan.equals("EVENTS"))
@@ -243,6 +275,14 @@ public class WorkPanel extends JPanel {
 		setCurrentButton(notesB);
 		Context.put("CURRENT_PANEL", "NOTES");
 	}
+	
+	// pspB ActionEvent
+	/* public void pspB_actionPerformed(ActionEvent e) {
+		cardLayout1.show(panel, "DAILYITEMS");
+		dialyItemsPanel.selectPanel("PSP");
+		setCurrentButton(pspB);
+		Context.put("CURRENT_PANEL", "PSP");
+	} */
 
 	public void tasksB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
