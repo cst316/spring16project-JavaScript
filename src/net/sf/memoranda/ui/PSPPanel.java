@@ -8,17 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.swing.SwingUtilities;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import net.sf.memoranda.CurrentProject;
 import net.sf.memoranda.EventNotificationListener;
@@ -43,13 +33,23 @@ import nu.xom.Element;
 /*$Id: AgendaPanel.java,v 1.11 2005/02/15 16:58:02 rawsushi Exp $*/
 public class PSPPanel extends JPanel {
 	
-    pspLearnB.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-    		pspLearnB.setIcon(
-    				new ImageIcon(
-    					net.sf.memoranda.ui.AppFrame.class.getResource(
-    						"resources/icons/psp_diagram.png"))); 
+	JPanel panel = new JPanel(new BorderLayout());
+	ImageIcon image = new ImageIcon("resources/icons/psp_diagram.png");
+	JLabel label = new JLabel("", image, JLabel.CENTER);
+	
+	public PSPPanel() {
+        try {
+            jbInit();
         }
-    });
+        catch (Exception ex) {
+           new ExceptionDialog(ex);
+        }
+    }
+	
+	
+	void jbInit()
+	{
+		panel.add(label, BorderLayout.CENTER);
+	}
 
 }
