@@ -578,16 +578,26 @@ public class AppFrame extends JFrame {
             }
         };
 
-        this.workPanel.dailyItemsPanel.taskB
-                .addActionListener(setMenusDisabled);
+        this.workPanel.dailyItemsPanel.taskB.addActionListener(
+        		setMenusDisabled);
         this.workPanel.dailyItemsPanel.alarmB.addActionListener(
                 setMenusDisabled);
 
-        this.workPanel.tasksB.addActionListener(setMenusDisabled);
-        this.workPanel.eventsB.addActionListener(setMenusDisabled);
-        this.workPanel.filesB.addActionListener(setMenusDisabled);
-        this.workPanel.agendaB.addActionListener(setMenusDisabled);
-
+        this.workPanel.tasksB.addActionListener(
+        		setMenusDisabled);
+        this.workPanel.eventsB.addActionListener(
+        		setMenusDisabled);
+        this.workPanel.filesB.addActionListener(
+        		setMenusDisabled);
+        this.workPanel.agendaB.addActionListener(
+        		setMenusDisabled);
+        this.workPanel.pspLearnB.addActionListener(setMenusDisabled);
+               /* new java.awt.event.ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        setEnabledEditorMenus(true);
+                    }
+                }
+                */
         this.workPanel.notesB.addActionListener(
                 new java.awt.event.ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -595,7 +605,7 @@ public class AppFrame extends JFrame {
                     }
                 });
 
-        Object fwo = Context.get("FRAME_WIDTH");
+        Object fwo = Context.get("FRAME_WIDTH"); 
         Object fho = Context.get("FRAME_HEIGHT");
         if ((fwo != null) && (fho != null)) {
             int w = new Integer((String) fwo).intValue();
