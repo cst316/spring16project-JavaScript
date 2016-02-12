@@ -64,6 +64,7 @@ public class EventDialog extends JDialog implements WindowListener {
     public JSpinner startDate = new JSpinner(new SpinnerDateModel());
     JButton setStartDateB = new JButton();
     public JRadioButton weeklyRepeatRB = new JRadioButton();
+    public JRadioButton socialType = new JRadioButton();
     public JComboBox weekdaysCB = new JComboBox(Local.getWeekdayNames());
     public JCheckBox enableEndDateCB = new JCheckBox();
 	public JCheckBox workingDaysOnlyCB = new JCheckBox();
@@ -137,6 +138,31 @@ public class EventDialog extends JDialog implements WindowListener {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         eventPanel.add(textField, gbc);
         
+        //Type Panel added by Kellen Volpe
+        
+       
+        JPanel types = new JPanel();
+		add(types);
+		
+		JRadioButton rdbtnSocial = new JRadioButton("Social");
+		types.add(rdbtnSocial);
+		rdbtnSocial.setActionCommand("SOCIAL");
+		
+		JRadioButton rdbtnBussiness = new JRadioButton("Bussiness");
+		types.add(rdbtnBussiness);
+		rdbtnBussiness.setActionCommand("BUSSINESS");
+		
+		JRadioButton rdbtnOther = new JRadioButton("Other");
+		types.add(rdbtnOther);
+		rdbtnOther.setActionCommand("OTHER");
+		
+		ButtonGroup type = new ButtonGroup();
+		type.add(rdbtnSocial);
+		type.add(rdbtnBussiness);
+		type.add(rdbtnOther);
+		rdbtnSocial.setSelected(true);
+		
+		
         // Build RepeatPanel
         repeatBorder = new TitledBorder(BorderFactory.createLineBorder(
         Color.gray, 1), Local.getString("Repeat"));
@@ -473,7 +499,10 @@ public class EventDialog extends JDialog implements WindowListener {
     public void noRepeatRB_actionPerformed(ActionEvent e) {
         disableElements();
     }
-
+    
+    public void button1_actionPerformed(ActionEvent e) {
+        System.out.println("Hello");
+    }
     void okB_actionPerformed(ActionEvent e) {
         this.dispose();
     }
