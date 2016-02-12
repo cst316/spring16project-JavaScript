@@ -59,6 +59,8 @@ public class TaskDialog extends JDialog {
 //    Border border6;
     JPanel jPanel2 = new JPanel(new GridLayout(3, 2));
     JTextField todoField = new JTextField();
+    JTextField tagField = new JTextField();
+    JLabel tagLabel = new JLabel();
     
     // added by rawsushi
     JTextField effortField = new JTextField();
@@ -186,6 +188,21 @@ public class TaskDialog extends JDialog {
         gbCon.gridwidth = GridBagConstraints.REMAINDER;
         gbCon.weighty = 1;
         gbLayout.setConstraints(todoField,gbCon);
+        
+        tagLabel.setMaximumSize(new Dimension(100, 16));
+        tagLabel.setMinimumSize(new Dimension(60, 16));
+        tagLabel.setText(Local.getString("Tag"));
+        gbCon.gridwidth = GridBagConstraints.REMAINDER;
+        gbCon.weighty = 1;
+        gbCon.anchor = GridBagConstraints.WEST;
+        gbLayout.setConstraints(tagLabel,gbCon);
+        
+        tagField.setBorder(border8);
+        tagField.setPreferredSize(new Dimension(100,24));
+        gbCon.gridwidth = GridBagConstraints.REMAINDER;
+        gbCon.weighty = 1;
+        gbCon.anchor = GridBagConstraints.WEST;
+        gbLayout.setConstraints(tagField,gbCon);
         
         jLabelDescription.setMaximumSize(new Dimension(100, 16));
         jLabelDescription.setMinimumSize(new Dimension(60, 16));
@@ -333,7 +350,9 @@ public class TaskDialog extends JDialog {
         dialogTitlePanel.add(header, null);
         areaPanel.add(jPanel8, BorderLayout.NORTH);
         jPanel8.add(todoField, null);
-        jPanel8.add(jLabelDescription);
+        jPanel8.add(tagLabel, null);
+        jPanel8.add(tagField,null);
+        jPanel8.add(jLabelDescription,null);
         jPanel8.add(descriptionScrollPane, null);
         areaPanel.add(jPanel2, BorderLayout.CENTER);
         jPanel2.add(jPanel6, null);

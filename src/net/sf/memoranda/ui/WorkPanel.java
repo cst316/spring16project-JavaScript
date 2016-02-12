@@ -38,6 +38,8 @@ public class WorkPanel extends JPanel {
 	public JButton tasksB = new JButton();
 	public JButton eventsB = new JButton();
 	public JButton filesB = new JButton();
+	// pspLearnB is a new button for the additonal feature
+	public JButton pspLearnB = new JButton();
 	JButton currentB = null;
 	Border border1;
 
@@ -63,7 +65,6 @@ public class WorkPanel extends JPanel {
 		this.setLayout(borderLayout1);
 		toolBar.setOrientation(JToolBar.VERTICAL);
 		toolBar.setBackground(Color.white);
-
 		toolBar.setBorderPainted(false);
 		toolBar.setFloatable(false);
 		panel.setLayout(cardLayout1);
@@ -71,7 +72,6 @@ public class WorkPanel extends JPanel {
 		agendaB.setBackground(Color.white);
 		agendaB.setMaximumSize(new Dimension(60, 80));
 		agendaB.setMinimumSize(new Dimension(30, 30));
-
 		agendaB.setFont(new java.awt.Font("Dialog", 1, 10));
 		agendaB.setPreferredSize(new Dimension(50, 50));
 		agendaB.setBorderPainted(false);
@@ -97,7 +97,6 @@ public class WorkPanel extends JPanel {
 		eventsB.setBackground(Color.white);
 		eventsB.setMaximumSize(new Dimension(60, 80));
 		eventsB.setMinimumSize(new Dimension(30, 30));
-
 		eventsB.setFont(new java.awt.Font("Dialog", 1, 10));
 		eventsB.setPreferredSize(new Dimension(50, 50));
 		eventsB.setBorderPainted(false);
@@ -118,8 +117,8 @@ public class WorkPanel extends JPanel {
 					"resources/icons/events.png")));
 		eventsB.setOpaque(false);
 		eventsB.setMargin(new Insets(0, 0, 0, 0));
-		//eventsB.setSelected(true);
-
+		//eventsB.setSelected(true);	
+		
 		tasksB.setSelected(true);
 		tasksB.setFont(new java.awt.Font("Dialog", 1, 10));
 		tasksB.setMargin(new Insets(0, 0, 0, 0));
@@ -171,6 +170,7 @@ public class WorkPanel extends JPanel {
 		notesB.setMargin(new Insets(0, 0, 0, 0));
 		notesB.setSelected(true);
 		this.setPreferredSize(new Dimension(1073, 300));
+		
 
 		filesB.setSelected(true);
 		filesB.setMargin(new Insets(0, 0, 0, 0));
@@ -198,6 +198,34 @@ public class WorkPanel extends JPanel {
 		filesB.setBackground(Color.white);
 		this.add(toolBar, BorderLayout.WEST);
 		this.add(panel, BorderLayout.CENTER);
+
+		
+		pspLearnB.setFont(new java.awt.Font("Dialog", 1,10));
+		pspLearnB.setBackground(Color.white);
+		pspLearnB.setBorder(null);
+		pspLearnB.setMaximumSize(new Dimension(60, 80));
+		pspLearnB.setMinimumSize(new Dimension(30, 30));
+		pspLearnB.setOpaque(false);
+		pspLearnB.setPreferredSize(new Dimension(60, 50));
+		pspLearnB.setBorderPainted(false);
+		pspLearnB.setContentAreaFilled(false);
+		pspLearnB.setFocusPainted(false);
+		pspLearnB.setHorizontalTextPosition(SwingConstants.CENTER);
+		pspLearnB.setText(Local.getString("PSP Learn"));
+		pspLearnB.setVerticalAlignment(SwingConstants.TOP);
+		pspLearnB.setVerticalTextPosition(SwingConstants.BOTTOM);
+		pspLearnB.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pspLearnB_actionPerformed(e);
+			}
+		});
+		pspLearnB.setIcon(
+			new ImageIcon(
+				net.sf.memoranda.ui.AppFrame.class.getResource(
+					"resources/icons/psp_LearnB.png"))); 
+		pspLearnB.setMargin(new Insets(0, 0, 0, 0));
+		pspLearnB.setSelected(true);		
+
 		panel.add(dailyItemsPanel, "DAILYITEMS");
 		panel.add(filesPanel, "FILES");
 		toolBar.add(agendaB, null);
@@ -205,6 +233,7 @@ public class WorkPanel extends JPanel {
 		toolBar.add(tasksB, null);
 		toolBar.add(notesB, null);
 		toolBar.add(filesB, null);
+		toolBar.add(pspLearnB, null);
 		currentB = agendaB;
 		// Default blue color
 		currentB.setBackground(new Color(215, 225, 250));
@@ -227,6 +256,8 @@ public class WorkPanel extends JPanel {
 				eventsB_actionPerformed(null);
 			else if (pan.equals("FILES"))
 				filesB_actionPerformed(null);
+			else if (pan.equals("PSP"))
+				pspLearnB_actionPerformed(null);
 		}
 	}
 
@@ -244,6 +275,7 @@ public class WorkPanel extends JPanel {
 		Context.put("CURRENT_PANEL", "NOTES");
 	}
 
+
 	public void tasksB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
 		dailyItemsPanel.selectPanel("TASKS");
@@ -257,13 +289,14 @@ public class WorkPanel extends JPanel {
 		setCurrentButton(eventsB);
 		Context.put("CURRENT_PANEL", "EVENTS");
 	}
-
+	
 	public void filesB_actionPerformed(ActionEvent e) {
+
 		cardLayout1.show(panel, "FILES");
 		setCurrentButton(filesB);
 		Context.put("CURRENT_PANEL", "FILES");
 	}
-
+	
 	void setCurrentButton(JButton cb) {
 		currentB.setBackground(Color.white);
 		currentB.setOpaque(false);
@@ -272,4 +305,14 @@ public class WorkPanel extends JPanel {
 		currentB.setBackground(new Color(215, 225, 250));
 		currentB.setOpaque(true);
 	}
+	
+	// pspLearnB ActionEvent
+	public void pspLearnB_actionPerformed(ActionEvent e) {
+		cardLayout1.show(panel, "DAILYITEMS");
+		dailyItemsPanel.selectPanel("PSP");
+		setCurrentButton(pspLearnB);
+		Context.put("CURRENT_PANEL", "PSP");
+	} 
+	
+
 }

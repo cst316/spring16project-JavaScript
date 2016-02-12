@@ -151,6 +151,7 @@ public class App {
 
 	/**
 	 * Method showSplash.
+	 * First panel viewed
 	 */
 	private void showSplash() {
 		splash = new JFrame();
