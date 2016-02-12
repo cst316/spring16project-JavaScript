@@ -160,12 +160,12 @@
 	<!-- Runs the compiled program                                           -->
 	<!-- =================================================================== -->
 	<target name="run" depends="compile" description="Run the program">
-		<!--<copy todir="${build}">
+	   <!--<copy todir="${build}">
        <fileset dir="${lib.dir}" >
           <include name="*.jar" />
           <include name="*.zip" />
        </fileset>
-    </copy>-->
+       </copy>-->
 		<java classname="${main.class}" fork="true">
 			<classpath refid="classpath"/>
 		</java>

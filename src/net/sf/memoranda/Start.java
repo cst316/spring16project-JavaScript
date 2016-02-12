@@ -22,7 +22,7 @@ public class Start {
     
     static App app = null;
     
-    static int DEFAULT_PORT = 19432;
+    static int DEFAULT_PORT = 19433;
     static boolean checkIfAlreadyStartet = true;
     
     static {

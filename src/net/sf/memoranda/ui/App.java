@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 
 import net.sf.memoranda.EventsScheduler;
 import net.sf.memoranda.util.Configuration;
-
+import net.sf.memoranda.util.Mailing;
 /**
  * 
  * Copyright (c) 2003 Memoranda Team. http://memoranda.sf.net
@@ -54,6 +54,11 @@ public class App {
 
 	public App(boolean fullmode) {
 		super();
+		try {
+		    //Mailing.mailScheduler();
+		} catch (Exception e) {
+			
+		}
 		if (fullmode)
 			fullmode = !Configuration.get("START_MINIMIZED").equals("yes");
 		/* DEBUG */
