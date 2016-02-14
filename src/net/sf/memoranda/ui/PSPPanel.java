@@ -4,40 +4,41 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import net.sf.memoranda.CurrentProject;
-import net.sf.memoranda.EventNotificationListener;
-import net.sf.memoranda.EventsManager;
-import net.sf.memoranda.EventsScheduler;
-import net.sf.memoranda.History;
-import net.sf.memoranda.NoteList;
-import net.sf.memoranda.Project;
-import net.sf.memoranda.ProjectListener;
-import net.sf.memoranda.ProjectManager;
-import net.sf.memoranda.ResourcesList;
-import net.sf.memoranda.TaskList;
-import net.sf.memoranda.date.CalendarDate;
-import net.sf.memoranda.date.CurrentDate;
-import net.sf.memoranda.date.DateListener;
-import net.sf.memoranda.util.AgendaGenerator;
+import net.sf.memoranda.Resource;
+import net.sf.memoranda.util.AppList;
 import net.sf.memoranda.util.CurrentStorage;
 import net.sf.memoranda.util.Local;
+import net.sf.memoranda.util.MimeType;
+import net.sf.memoranda.util.MimeTypesList;
 import net.sf.memoranda.util.Util;
-import nu.xom.Element;
 
-/*$Id: AgendaPanel.java,v 1.11 2005/02/15 16:58:02 rawsushi Exp $*/
+import java.io.*;
+
+/*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPPanel extends JPanel {
-	
-	JPanel panel = new JPanel(new BorderLayout());
-	ImageIcon image = new ImageIcon("resources/icons/psp_diagram.png");
-	JLabel label = new JLabel("", image, JLabel.CENTER);
-	
-	public PSPPanel() {
+    BorderLayout borderLayout1 = new BorderLayout();
+    JScrollPane scrollPane = new JScrollPane();
+  
+    public PSPPanel() {
         try {
             jbInit();
         }
@@ -45,11 +46,7 @@ public class PSPPanel extends JPanel {
            new ExceptionDialog(ex);
         }
     }
-	
-	
-	void jbInit()
-	{
-		panel.add(label, BorderLayout.CENTER);
-	}
-
+    void jbInit() throws Exception {
+        this.setLayout(borderLayout1);
+    }
 }

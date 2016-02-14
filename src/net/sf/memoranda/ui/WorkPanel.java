@@ -255,7 +255,7 @@ public class WorkPanel extends JPanel {
 				eventsB_actionPerformed(null);
 			else if (pan.equals("FILES"))
 				filesB_actionPerformed(null);
-			else if (pan.equals("PSP"))
+			else if (pan.equals("PSP_DOCS"))
 				pspB_actionPerformed(null);
 		}
 	}
@@ -306,10 +306,9 @@ public class WorkPanel extends JPanel {
 	}
 	
 	public void pspB_actionPerformed(ActionEvent e) {
-		cardLayout1.show(panel, "DAILYITEMS");
-		dailyItemsPanel.selectPanel("NOTES");
+		cardLayout1.show(panel, "PSP_DOCS");
 		setCurrentButton(pspB);
-		Context.put("CURRENT_PANEL", "NOTES");
+		Context.put("CURRENT_PANEL", "PSP_DOCS");
 	} 
 	
 
