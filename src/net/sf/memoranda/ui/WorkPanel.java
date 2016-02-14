@@ -38,8 +38,7 @@ public class WorkPanel extends JPanel {
 	public JButton tasksB = new JButton();
 	public JButton eventsB = new JButton();
 	public JButton filesB = new JButton();
-	// pspLearnB is a new button for the additonal feature
-	public JButton pspLearnB = new JButton();
+	public JButton pspB = new JButton();
 	JButton currentB = null;
 	Border border1;
 
@@ -200,31 +199,31 @@ public class WorkPanel extends JPanel {
 		this.add(panel, BorderLayout.CENTER);
 
 		
-		pspLearnB.setFont(new java.awt.Font("Dialog", 1,10));
-		pspLearnB.setBackground(Color.white);
-		pspLearnB.setBorder(null);
-		pspLearnB.setMaximumSize(new Dimension(60, 80));
-		pspLearnB.setMinimumSize(new Dimension(30, 30));
-		pspLearnB.setOpaque(false);
-		pspLearnB.setPreferredSize(new Dimension(60, 50));
-		pspLearnB.setBorderPainted(false);
-		pspLearnB.setContentAreaFilled(false);
-		pspLearnB.setFocusPainted(false);
-		pspLearnB.setHorizontalTextPosition(SwingConstants.CENTER);
-		pspLearnB.setText(Local.getString("PSP Learn"));
-		pspLearnB.setVerticalAlignment(SwingConstants.TOP);
-		pspLearnB.setVerticalTextPosition(SwingConstants.BOTTOM);
-		pspLearnB.addActionListener(new java.awt.event.ActionListener() {
+		pspB.setFont(new java.awt.Font("Dialog", 1,10));
+		pspB.setBackground(Color.white);
+		pspB.setBorder(null);
+		pspB.setMaximumSize(new Dimension(60, 80));
+		pspB.setMinimumSize(new Dimension(30, 30));
+		pspB.setOpaque(false);
+		pspB.setPreferredSize(new Dimension(60, 50));
+		pspB.setBorderPainted(false);
+		pspB.setContentAreaFilled(false);
+		pspB.setFocusPainted(false);
+		pspB.setHorizontalTextPosition(SwingConstants.CENTER);
+		pspB.setText(Local.getString("PSP Docs"));
+		pspB.setVerticalAlignment(SwingConstants.TOP);
+		pspB.setVerticalTextPosition(SwingConstants.BOTTOM);
+		pspB.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pspLearnB_actionPerformed(e);
+				pspB_actionPerformed(e);
 			}
 		});
-		pspLearnB.setIcon(
+		pspB.setIcon(
 			new ImageIcon(
 				net.sf.memoranda.ui.AppFrame.class.getResource(
 					"resources/icons/psp_LearnB.png"))); 
-		pspLearnB.setMargin(new Insets(0, 0, 0, 0));
-		pspLearnB.setSelected(true);		
+		pspB.setMargin(new Insets(0, 0, 0, 0));
+		pspB.setSelected(true);		
 
 		panel.add(dailyItemsPanel, "DAILYITEMS");
 		panel.add(filesPanel, "FILES");
@@ -233,7 +232,7 @@ public class WorkPanel extends JPanel {
 		toolBar.add(tasksB, null);
 		toolBar.add(notesB, null);
 		toolBar.add(filesB, null);
-		toolBar.add(pspLearnB, null);
+		toolBar.add(pspB, null);
 		currentB = agendaB;
 		// Default blue color
 		currentB.setBackground(new Color(215, 225, 250));
@@ -257,7 +256,7 @@ public class WorkPanel extends JPanel {
 			else if (pan.equals("FILES"))
 				filesB_actionPerformed(null);
 			else if (pan.equals("PSP"))
-				pspLearnB_actionPerformed(null);
+				pspB_actionPerformed(null);
 		}
 	}
 
@@ -306,12 +305,11 @@ public class WorkPanel extends JPanel {
 		currentB.setOpaque(true);
 	}
 	
-	// pspLearnB ActionEvent
-	public void pspLearnB_actionPerformed(ActionEvent e) {
+	public void pspB_actionPerformed(ActionEvent e) {
 		cardLayout1.show(panel, "DAILYITEMS");
-		dailyItemsPanel.selectPanel("PSP");
-		setCurrentButton(pspLearnB);
-		Context.put("CURRENT_PANEL", "PSP");
+		dailyItemsPanel.selectPanel("NOTES");
+		setCurrentButton(pspB);
+		Context.put("CURRENT_PANEL", "NOTES");
 	} 
 	
 

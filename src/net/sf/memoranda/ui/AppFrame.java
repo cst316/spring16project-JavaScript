@@ -591,13 +591,7 @@ public class AppFrame extends JFrame {
         		setMenusDisabled);
         this.workPanel.agendaB.addActionListener(
         		setMenusDisabled);
-        this.workPanel.pspLearnB.addActionListener(setMenusDisabled);
-               /* new java.awt.event.ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        setEnabledEditorMenus(true);
-                    }
-                }
-                */
+        this.workPanel.pspB.addActionListener(setMenusDisabled);
         this.workPanel.notesB.addActionListener(
                 new java.awt.event.ActionListener() {
                     public void actionPerformed(ActionEvent e) {
