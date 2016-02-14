@@ -65,7 +65,7 @@ public class DailyItemsPanel extends JPanel {
     TaskPanel tasksPanel = new TaskPanel(this);
     EventsPanel eventsPanel = new EventsPanel(this);
     AgendaPanel agendaPanel = new AgendaPanel(this);
-    PSPPanel pspPanel = new PSPPanel(this);
+    //PSPPanel pspPanel = new PSPPanel(this);
     
     ImageIcon expIcon = new ImageIcon(net.sf.memoranda.ui.AppFrame.class.getResource("resources/icons/exp_right.png"));
     ImageIcon collIcon = new ImageIcon(net.sf.memoranda.ui.AppFrame.class.getResource("resources/icons/exp_left.png"));
@@ -208,7 +208,7 @@ public class DailyItemsPanel extends JPanel {
         editorsPanel.add(eventsPanel, "EVENTS");
         editorsPanel.add(tasksPanel, "TASKS");
         editorsPanel.add(editorPanel, "NOTES");
-        editorsPanel.add(pspPanel, "PSP_DOCS");
+       // editorsPanel.add(pspPanel, "PSP_DOCS");
         
         splitPane.add(mainPanel, JSplitPane.RIGHT);
         splitPane.add(controlPanel, JSplitPane.LEFT);
