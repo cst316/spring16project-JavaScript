@@ -41,6 +41,10 @@ import java.io.*;
 public class PSPPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
 	JPanel firstPanel = new JPanel();
+	JPanel secondPanel = new JPanel();
+	JPanel thirdPanel = new JPanel();
+	JPanel forthPanel = new JPanel();
+	
     JTabbedPane tabbedPane = new JTabbedPane();
 
     public PSPPanel() {
@@ -57,6 +61,9 @@ public class PSPPanel extends JPanel {
         this.setLayout(borderLayout1);
         
         tabbedPane.add("Project Summary", firstPanel);
+        tabbedPane.add("Design Form", secondPanel);
+        tabbedPane.add("Defect Recording", thirdPanel);
+        tabbedPane.add("Time Recording", forthPanel);
         
         add(tabbedPane);
    
