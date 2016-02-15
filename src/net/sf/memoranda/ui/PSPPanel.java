@@ -25,7 +25,6 @@ import javax.swing.JToolBar;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import apple.laf.JRSUIUtils.TabbedPane;
 import net.sf.memoranda.CurrentProject;
 import net.sf.memoranda.Resource;
 import net.sf.memoranda.util.AppList;
@@ -40,10 +39,11 @@ import java.io.*;
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
-	JPanel firstPanel = new JPanel();
-	JPanel secondPanel = new JPanel();
-	JPanel thirdPanel = new JPanel();
-	JPanel forthPanel = new JPanel();
+	PSPProjectSummary projectSummaryPanel = new PSPProjectSummary();
+	PSPDesignForm designFormPanel = new PSPDesignForm();
+	PSPTimeRecording timeRecordingPanel = new PSPTimeRecording();
+	PSPDefectRecording defectRecordingPanel = new PSPDefectRecording();
+	
 	
     JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -60,13 +60,12 @@ public class PSPPanel extends JPanel {
     	
         this.setLayout(borderLayout1);
         
-        tabbedPane.add("Project Summary", firstPanel);
-        tabbedPane.add("Design Form", secondPanel);
-        tabbedPane.add("Defect Recording", thirdPanel);
-        tabbedPane.add("Time Recording", forthPanel);
+        tabbedPane.add("Project Summary", projectSummaryPanel);
+        tabbedPane.add("Design Form", designFormPanel);
+        tabbedPane.add("Time Recording", timeRecordingPanel);
+        tabbedPane.add("Defect Recording", defectRecordingPanel);
         
         add(tabbedPane);
-   
     }
        	
  }
