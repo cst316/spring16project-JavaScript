@@ -40,7 +40,7 @@ import java.io.*;
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPDefectRecording extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
-    
+    //Comment
     public PSPDefectRecording() {
     	
         try {
