@@ -1,0 +1,311 @@
+package net.sf.memoranda.ui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JToolBar;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import net.sf.memoranda.CurrentProject;
+import net.sf.memoranda.Resource;
+import net.sf.memoranda.ui.ResourcesPanel.PopupListener;
+import net.sf.memoranda.util.AppList;
+import net.sf.memoranda.util.CurrentStorage;
+import net.sf.memoranda.util.Local;
+import net.sf.memoranda.util.MimeType;
+import net.sf.memoranda.util.MimeTypesList;
+import net.sf.memoranda.util.Util;
+
+import java.io.*;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JTextField;
+
+/*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
+public class PSPDefectRecording extends JPanel {
+	private JTextField dateField;
+	private JTextField nameField;
+	private JTextField programField;
+	private JTextField prgrmNumField;
+	private JTextField projectField1;
+	private JTextField dateField1;
+	private JTextField numberField1;
+	private JTextField typeField1;
+	private JTextField injectField1;
+	private JTextField removeField1;
+	private JTextField fixTimeField1;
+	private JTextField fixRefField1;
+	private JTextField descriptionField1;
+    
+    public PSPDefectRecording() {
+    	GridBagLayout gridBagLayout = new GridBagLayout();
+    	gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+    	gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
+    	gridBagLayout.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+    	gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
+    	setLayout(gridBagLayout);
+    	
+    	JLabel nameLabel = new JLabel("Name:");
+    	GridBagConstraints gbc_nameLabel = new GridBagConstraints();
+    	gbc_nameLabel.anchor = GridBagConstraints.EAST;
+    	gbc_nameLabel.insets = new Insets(0, 0, 5, 5);
+    	gbc_nameLabel.gridx = 0;
+    	gbc_nameLabel.gridy = 0;
+    	add(nameLabel, gbc_nameLabel);
+    	
+    	nameField = new JTextField();
+    	GridBagConstraints gbc_nameField = new GridBagConstraints();
+    	gbc_nameField.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_nameField.insets = new Insets(0, 0, 5, 5);
+    	gbc_nameField.gridx = 1;
+    	gbc_nameField.gridy = 0;
+    	add(nameField, gbc_nameField);
+    	nameField.setColumns(10);
+    	
+    	JLabel dateLabel = new JLabel("Date:");
+    	GridBagConstraints gbc_dateLabel = new GridBagConstraints();
+    	gbc_dateLabel.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel.anchor = GridBagConstraints.EAST;
+    	gbc_dateLabel.gridx = 5;
+    	gbc_dateLabel.gridy = 0;
+    	add(dateLabel, gbc_dateLabel);
+    	
+    	dateField = new JTextField();
+    	GridBagConstraints gbc_dateField = new GridBagConstraints();
+    	gbc_dateField.anchor = GridBagConstraints.WEST;
+    	gbc_dateField.insets = new Insets(0, 0, 5, 0);
+    	gbc_dateField.gridx = 6;
+    	gbc_dateField.gridy = 0;
+    	add(dateField, gbc_dateField);
+    	dateField.setColumns(10);
+    	
+    	JLabel programLabel = new JLabel("Program:");
+    	GridBagConstraints gbc_programLabel = new GridBagConstraints();
+    	gbc_programLabel.anchor = GridBagConstraints.EAST;
+    	gbc_programLabel.insets = new Insets(0, 0, 5, 5);
+    	gbc_programLabel.gridx = 0;
+    	gbc_programLabel.gridy = 1;
+    	add(programLabel, gbc_programLabel);
+    	
+    	programField = new JTextField();
+    	GridBagConstraints gbc_programField = new GridBagConstraints();
+    	gbc_programField.insets = new Insets(0, 0, 5, 5);
+    	gbc_programField.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_programField.gridx = 1;
+    	gbc_programField.gridy = 1;
+    	add(programField, gbc_programField);
+    	programField.setColumns(10);
+    	
+    	JLabel prgmNumLabel = new JLabel("Program#:");
+    	GridBagConstraints gbc_prgmNumLabel = new GridBagConstraints();
+    	gbc_prgmNumLabel.anchor = GridBagConstraints.EAST;
+    	gbc_prgmNumLabel.insets = new Insets(0, 0, 5, 5);
+    	gbc_prgmNumLabel.gridx = 5;
+    	gbc_prgmNumLabel.gridy = 1;
+    	add(prgmNumLabel, gbc_prgmNumLabel);
+    	
+    	prgrmNumField = new JTextField();
+    	GridBagConstraints gbc_prgrmNumField = new GridBagConstraints();
+    	gbc_prgrmNumField.insets = new Insets(0, 0, 5, 0);
+    	gbc_prgrmNumField.anchor = GridBagConstraints.WEST;
+    	gbc_prgrmNumField.gridx = 6;
+    	gbc_prgrmNumField.gridy = 1;
+    	add(prgrmNumField, gbc_prgrmNumField);
+    	prgrmNumField.setColumns(10);
+    	
+    	JPanel projectLabel1 = new JPanel();
+    	GridBagConstraints gbc_projectLabel1 = new GridBagConstraints();
+    	gbc_projectLabel1.gridwidth = 7;
+    	gbc_projectLabel1.insets = new Insets(0, 0, 0, 5);
+    	gbc_projectLabel1.fill = GridBagConstraints.BOTH;
+    	gbc_projectLabel1.gridx = 0;
+    	gbc_projectLabel1.gridy = 2;
+    	add(projectLabel1, gbc_projectLabel1);
+    	GridBagLayout gbl_projectLabel1 = new GridBagLayout();
+    	gbl_projectLabel1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    	gbl_projectLabel1.rowHeights = new int[]{0, 0, 0, 0};
+    	gbl_projectLabel1.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	gbl_projectLabel1.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	projectLabel1.setLayout(gbl_projectLabel1);
+    	
+    	JLabel projectLabel1_1 = new JLabel("Project");
+    	GridBagConstraints gbc_projectLabel1_1 = new GridBagConstraints();
+    	gbc_projectLabel1_1.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectLabel1_1.gridx = 0;
+    	gbc_projectLabel1_1.gridy = 0;
+    	projectLabel1.add(projectLabel1_1, gbc_projectLabel1_1);
+    	
+    	JLabel dateLabel1 = new JLabel("Date");
+    	GridBagConstraints gbc_dateLabel1 = new GridBagConstraints();
+    	gbc_dateLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel1.anchor = GridBagConstraints.NORTH;
+    	gbc_dateLabel1.gridx = 1;
+    	gbc_dateLabel1.gridy = 0;
+    	projectLabel1.add(dateLabel1, gbc_dateLabel1);
+    	
+    	JLabel numberLabel1 = new JLabel("Number");
+    	GridBagConstraints gbc_numberLabel1 = new GridBagConstraints();
+    	gbc_numberLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberLabel1.gridx = 2;
+    	gbc_numberLabel1.gridy = 0;
+    	projectLabel1.add(numberLabel1, gbc_numberLabel1);
+    	
+    	JLabel typeLabel1 = new JLabel("Type");
+    	GridBagConstraints gbc_typeLabel1 = new GridBagConstraints();
+    	gbc_typeLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeLabel1.gridx = 3;
+    	gbc_typeLabel1.gridy = 0;
+    	projectLabel1.add(typeLabel1, gbc_typeLabel1);
+    	
+    	JLabel injectLabel1 = new JLabel("Inject");
+    	GridBagConstraints gbc_injectLabel1 = new GridBagConstraints();
+    	gbc_injectLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectLabel1.gridx = 4;
+    	gbc_injectLabel1.gridy = 0;
+    	projectLabel1.add(injectLabel1, gbc_injectLabel1);
+    	
+    	JLabel removeLabel1 = new JLabel("Remove");
+    	GridBagConstraints gbc_removeLabel1 = new GridBagConstraints();
+    	gbc_removeLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeLabel1.gridx = 5;
+    	gbc_removeLabel1.gridy = 0;
+    	projectLabel1.add(removeLabel1, gbc_removeLabel1);
+    	
+    	JLabel fixTimelabel1 = new JLabel("Fix Time");
+    	GridBagConstraints gbc_fixTimelabel1 = new GridBagConstraints();
+    	gbc_fixTimelabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimelabel1.gridx = 6;
+    	gbc_fixTimelabel1.gridy = 0;
+    	projectLabel1.add(fixTimelabel1, gbc_fixTimelabel1);
+    	
+    	JLabel fixRefLabel1 = new JLabel("Fix Ref");
+    	GridBagConstraints gbc_fixRefLabel1 = new GridBagConstraints();
+    	gbc_fixRefLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefLabel1.gridx = 7;
+    	gbc_fixRefLabel1.gridy = 0;
+    	projectLabel1.add(fixRefLabel1, gbc_fixRefLabel1);
+    	
+    	projectField1 = new JTextField();
+    	GridBagConstraints gbc_projectField1 = new GridBagConstraints();
+    	gbc_projectField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_projectField1.gridx = 0;
+    	gbc_projectField1.gridy = 1;
+    	projectLabel1.add(projectField1, gbc_projectField1);
+    	projectField1.setColumns(10);
+    	
+    	dateField1 = new JTextField();
+    	GridBagConstraints gbc_dateField1 = new GridBagConstraints();
+    	gbc_dateField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_dateField1.gridx = 1;
+    	gbc_dateField1.gridy = 1;
+    	projectLabel1.add(dateField1, gbc_dateField1);
+    	dateField1.setColumns(10);
+    	
+    	numberField1 = new JTextField();
+    	GridBagConstraints gbc_numberField1 = new GridBagConstraints();
+    	gbc_numberField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_numberField1.gridx = 2;
+    	gbc_numberField1.gridy = 1;
+    	projectLabel1.add(numberField1, gbc_numberField1);
+    	numberField1.setColumns(10);
+    	
+    	typeField1 = new JTextField();
+    	GridBagConstraints gbc_typeField1 = new GridBagConstraints();
+    	gbc_typeField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_typeField1.gridx = 3;
+    	gbc_typeField1.gridy = 1;
+    	projectLabel1.add(typeField1, gbc_typeField1);
+    	typeField1.setColumns(10);
+    	
+    	injectField1 = new JTextField();
+    	GridBagConstraints gbc_injectField1 = new GridBagConstraints();
+    	gbc_injectField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_injectField1.gridx = 4;
+    	gbc_injectField1.gridy = 1;
+    	projectLabel1.add(injectField1, gbc_injectField1);
+    	injectField1.setColumns(10);
+    	
+    	removeField1 = new JTextField();
+    	GridBagConstraints gbc_removeField1 = new GridBagConstraints();
+    	gbc_removeField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_removeField1.gridx = 5;
+    	gbc_removeField1.gridy = 1;
+    	projectLabel1.add(removeField1, gbc_removeField1);
+    	removeField1.setColumns(10);
+    	
+    	fixTimeField1 = new JTextField();
+    	GridBagConstraints gbc_fixTimeField1 = new GridBagConstraints();
+    	gbc_fixTimeField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimeField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_fixTimeField1.gridx = 6;
+    	gbc_fixTimeField1.gridy = 1;
+    	projectLabel1.add(fixTimeField1, gbc_fixTimeField1);
+    	fixTimeField1.setColumns(10);
+    	
+    	fixRefField1 = new JTextField();
+    	GridBagConstraints gbc_fixRefField1 = new GridBagConstraints();
+    	gbc_fixRefField1.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_fixRefField1.gridx = 7;
+    	gbc_fixRefField1.gridy = 1;
+    	projectLabel1.add(fixRefField1, gbc_fixRefField1);
+    	fixRefField1.setColumns(10);
+    	
+    	JLabel descriptionLabel1 = new JLabel("Description");
+    	GridBagConstraints gbc_descriptionLabel1 = new GridBagConstraints();
+    	gbc_descriptionLabel1.anchor = GridBagConstraints.EAST;
+    	gbc_descriptionLabel1.insets = new Insets(0, 0, 0, 5);
+    	gbc_descriptionLabel1.gridx = 0;
+    	gbc_descriptionLabel1.gridy = 2;
+    	projectLabel1.add(descriptionLabel1, gbc_descriptionLabel1);
+    	
+    	descriptionField1 = new JTextField();
+    	GridBagConstraints gbc_descriptionField1 = new GridBagConstraints();
+    	gbc_descriptionField1.gridwidth = 7;
+    	gbc_descriptionField1.insets = new Insets(0, 0, 0, 5);
+    	gbc_descriptionField1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_descriptionField1.gridx = 1;
+    	gbc_descriptionField1.gridy = 2;
+    	projectLabel1.add(descriptionField1, gbc_descriptionField1);
+    	descriptionField1.setColumns(10);
+    	
+        try {
+            jbInit();
+                        
+        }
+        catch (Exception ex) {
+           new ExceptionDialog(ex);
+        }
+    }
+    void jbInit() throws Exception {
+        
+        
+    }
+}
