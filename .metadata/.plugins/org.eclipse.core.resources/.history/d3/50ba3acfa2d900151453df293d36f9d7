@@ -135,16 +135,6 @@ public class PSPDefectRecording extends JPanel {
     
     public PSPDefectRecording() {
     	
-    		
-        try {
-            jbInit();
-                        
-        }
-        catch (Exception ex) {
-           new ExceptionDialog(ex);
-        }
-    }
-    void jbInit() throws Exception {
     	JLabel nameTitleLabel = new JLabel("Name:");
     	
     	nameTitleField = new JTextField();
@@ -1634,7 +1624,17 @@ public class PSPDefectRecording extends JPanel {
     				.addContainerGap(13, Short.MAX_VALUE))
     	);
     	setLayout(groupLayout);
-    
+    	
+        try {
+            jbInit();
+                        
+        }
+        catch (Exception ex) {
+           new ExceptionDialog(ex);
+        }
+    }
+    void jbInit() throws Exception {
+        
         
     }
 }
