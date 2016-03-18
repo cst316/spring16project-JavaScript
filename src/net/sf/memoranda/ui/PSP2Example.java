@@ -26,7 +26,7 @@ import javax.swing.JTextField;
  * @version 3/18/2016
  */
 
-public class PSPTimeRecording extends JPanel {
+public class PSP2Example extends JPanel {
 	
     //Initializing the labels
 	JLabel title = new JLabel("PSP0 Time Recording Log");
