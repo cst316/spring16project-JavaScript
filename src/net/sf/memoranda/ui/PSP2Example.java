@@ -96,7 +96,7 @@ public class PSP2Example extends JPanel {
 	JTextField comments9 = new JTextField(25);
 	JTextField comments10 = new JTextField(25);
 	
-    public PSPTimeRecording() {
+    public PSP2Example() {
     	
         try {
             jbInit();
@@ -144,6 +144,112 @@ public class PSP2Example extends JPanel {
         Dimension commentsSize = comments.getPreferredSize();
         comments.setBounds(190 + insets.left + dateSize.width + startSize.width + stopSize.width + phaseSize.width, 80 + insets.top, commentsSize.width, commentsSize.height);
         
+      //Date text fields
+        date1.setSize(12, 45);
+        Font date1Font = new Font("Courier", Font.PLAIN, 12);
+        date1.setFont(date1Font);
+        Dimension date1Size = date1.getPreferredSize();
+        date1.setBounds(60 + insets.left, 40 + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date2.setSize(12, 45);
+        date2.setFont(date1Font);
+        Dimension date2Size = date2.getPreferredSize();
+        date2.setBounds(60 + insets.left, 40 + date1Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date3.setSize(12, 45);
+        date3.setFont(date1Font);
+        Dimension date3Size = date3.getPreferredSize();
+        date3.setBounds(60 + insets.left, 40 + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date4.setSize(12, 45);
+        date4.setFont(date1Font);
+        Dimension date4Size = date4.getPreferredSize();
+        date4.setBounds(60 + insets.left, 40 + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date5.setSize(12, 45);
+        date5.setFont(date1Font);
+        Dimension date5Size = date5.getPreferredSize();
+        date5.setBounds(60 + insets.left, 40 + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+     
+        date6.setSize(12, 45);
+        date6.setFont(date1Font);
+        Dimension date6Size = date6.getPreferredSize();
+        date6.setBounds(60 + insets.left, 40 + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date7.setSize(12, 45);
+        date7.setFont(date1Font);
+        Dimension date7Size = date7.getPreferredSize();
+        date7.setBounds(60 + insets.left, 40 + date6Size.height + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date8.setSize(12, 45);
+        date8.setFont(date1Font);
+        Dimension date8Size = date8.getPreferredSize();
+        date8.setBounds(60 + insets.left, 40 + date7Size.height + date6Size.height + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date9.setSize(12, 45);
+        date9.setFont(date1Font);
+        Dimension date9Size = date9.getPreferredSize();
+        date9.setBounds(60 + insets.left, 40 + date8Size.height + date7Size.height + date6Size.height + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        date10.setSize(12, 45);
+        date10.setFont(date1Font);
+        Dimension date10Size = date10.getPreferredSize();
+        date10.setBounds(60 + insets.left, 40 + date9Size.height + date8Size.height + date7Size.height + date6Size.height + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
+        
+        //Start text fields
+        start1.setSize(12, 45);
+        start1.setFont(date1Font);
+        Dimension start1Size = start1.getPreferredSize();
+        start1.setBounds(70 + insets.left + date1Size.width, 40 + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start2.setSize(12, 45);
+        start2.setFont(date1Font);
+        Dimension start2Size = start2.getPreferredSize();
+        start2.setBounds(70 + insets.left + date1Size.width, 40 + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start3.setSize(12, 45);
+        start3.setFont(date1Font);
+        Dimension start3Size = start3.getPreferredSize();
+        start3.setBounds(70 + insets.left + date1Size.width, 40 + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start4.setSize(12, 45);
+        start4.setFont(date1Font);
+        Dimension start4Size = start4.getPreferredSize();
+        start4.setBounds(70 + insets.left + date1Size.width, 40 + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start5.setSize(12, 45);
+        start5.setFont(date1Font);
+        Dimension start5Size = start5.getPreferredSize();
+        start5.setBounds(70 + insets.left + date1Size.width, 40 + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start6.setSize(12, 45);
+        start6.setFont(date1Font);
+        Dimension start6Size = start6.getPreferredSize();
+        start6.setBounds(70 + insets.left + date1Size.width, 40 + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start7.setSize(12, 45);
+        start7.setFont(date1Font);
+        Dimension start7Size = start7.getPreferredSize();
+        start7.setBounds(70 + insets.left + date1Size.width, 40 + start6Size.height + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start8.setSize(12, 45);
+        start8.setFont(date1Font);
+        Dimension start8Size = start8.getPreferredSize();
+        start8.setBounds(70 + insets.left + date1Size.width, 40 + start7Size.height + start6Size.height + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start9.setSize(12, 45);
+        start9.setFont(date1Font);
+        Dimension start9Size = start9.getPreferredSize();
+        start9.setBounds(70 + insets.left + date1Size.width, 40 + start8Size.height + start7Size.height + start6Size.height + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        start10.setSize(12, 45);
+        start10.setFont(date1Font);
+        Dimension start10Size = start10.getPreferredSize();
+        start10.setBounds(70 + insets.left + date1Size.width, 40 + start9Size.height + start8Size.height + start7Size.height + start6Size.height + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + titleSize.height + insets.top, start1Size.width, start1Size.height);
+        
+        
+        
+        
         //Adding the labels
         this.add(title);
         this.add(date);
@@ -151,6 +257,29 @@ public class PSP2Example extends JPanel {
         this.add(stop);
         this.add(phase);
         this.add(comments);
+        
+        //Adding the text fields
+        this.add(date1);
+        this.add(date2);
+        this.add(date3);
+        this.add(date4);
+        this.add(date5);
+        this.add(date6);
+        this.add(date7);
+        this.add(date8);
+        this.add(date9);
+        this.add(date10);
+        
+        this.add(start1);
+        this.add(start2);
+        this.add(start3);
+        this.add(start4);
+        this.add(start5);
+        this.add(start6);
+        this.add(start7);
+        this.add(start8);
+        this.add(start9);
+        this.add(start10);
         
     }
 }
