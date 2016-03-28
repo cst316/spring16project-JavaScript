@@ -96,6 +96,30 @@ public class PSP2Example extends JPanel {
 	JTextField comments9 = new JTextField(25);
 	JTextField comments10 = new JTextField(25);
 	
+	//Initialzing the intteruopt text fields
+		JTextField interrupt1 = new JTextField(6);
+		JTextField interrupt2 = new JTextField(6);
+		JTextField interrupt3 = new JTextField(6);
+		JTextField interrupt4 = new JTextField(6);
+		JTextField interrupt5 = new JTextField(6);
+		JTextField interrupt6 = new JTextField(6);
+		JTextField interrupt7 = new JTextField(6);
+		JTextField interrupt8 = new JTextField(6);
+		JTextField interrupt9 = new JTextField(6);
+		JTextField interrupt10 = new JTextField(6);
+		
+		//Initialzing the delta text fields
+		JTextField delta1 = new JTextField(6);
+		JTextField delta2 = new JTextField(6);
+		JTextField delta3 = new JTextField(6);
+		JTextField delta4 = new JTextField(6);
+		JTextField delta5 = new JTextField(6);
+		JTextField delta6 = new JTextField(6);
+		JTextField delta7 = new JTextField(6);
+		JTextField delta8 = new JTextField(6);
+		JTextField delta9 = new JTextField(6);
+		JTextField delta10 = new JTextField(6);
+	
     public PSP2Example() {
     	
         try {
@@ -349,6 +373,57 @@ public class PSP2Example extends JPanel {
         Dimension phase10Size = phase10.getPreferredSize();
         phase10.setBounds(90 + insets.left + date1Size.width + start1Size.width + stop1Size.width, 40 + phase9Size.height + phase8Size.height + phase7Size.height + phase6Size.height + phase5Size.height + phase4Size.height + phase3Size.height + phase2Size.height + phase1Size.height + titleSize.height + phaseSize.height +insets.top, phase1Size.width, phase1Size.height);
      
+     	//Comments text fields
+        comments1.setSize(12, 45);
+        comments1.setFont(date1Font);
+        Dimension comments1Size = comments1.getPreferredSize();
+        comments1.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments2.setSize(12, 45);
+        comments2.setFont(date1Font);
+        Dimension comments2Size = comments2.getPreferredSize();
+        comments2.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments3.setSize(12, 45);
+        comments3.setFont(date1Font);
+        Dimension comments3Size = comments3.getPreferredSize();
+        comments3.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments4.setSize(12, 45);
+        comments4.setFont(date1Font);
+        Dimension comments4Size = comments4.getPreferredSize();
+        comments4.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments5.setSize(12, 45);
+        comments5.setFont(date1Font);
+        Dimension comments5Size = comments5.getPreferredSize();
+        comments5.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments6.setSize(12, 45);
+        comments6.setFont(date1Font);
+        Dimension comments6Size = comments6.getPreferredSize();
+        comments6.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments7.setSize(12, 45);
+        comments7.setFont(date1Font);
+        Dimension comments7Size = comments7.getPreferredSize();
+        comments7.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments6Size.height + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments8.setSize(12, 45);
+        comments8.setFont(date1Font);
+        Dimension comments8Size = comments8.getPreferredSize();
+        comments8.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments7Size.height + comments6Size.height + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments9.setSize(12, 45);
+        comments9.setFont(date1Font);
+        Dimension comments9Size = comments9.getPreferredSize();
+        comments9.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments8Size.height + comments7Size.height + comments6Size.height + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
+        comments10.setSize(12, 45);
+        comments10.setFont(date1Font);
+        Dimension comments10Size = comments10.getPreferredSize();
+        comments10.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments9Size.height + comments8Size.height + comments7Size.height + comments6Size.height + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
+        
         
         
         //Adding the labels
@@ -403,6 +478,21 @@ public class PSP2Example extends JPanel {
         this.add(phase8);
         this.add(phase9);
         this.add(phase10);
+        
+        this.add(comments1);
+        this.add(comments2);
+        this.add(comments3);
+        this.add(comments4);
+        this.add(comments5);
+        this.add(comments6);
+        this.add(comments7);
+        this.add(comments8);
+        this.add(comments9);
+        this.add(comments10);
+        
+        
+        
+        
         
     }
 }
