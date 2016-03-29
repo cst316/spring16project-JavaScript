@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -52,13 +53,10 @@ public class PSPLearnPanel extends JPanel {
     public PSPLearnPanel() {
         try {
             jbInit();
-        }catch (FileNotFoundException e){
-        	System.out.println("File not Found!"); 
         }
         catch (Exception ex) {
            new ExceptionDialog(ex);
         }
-        
     }
     
     void jbInit() throws Exception {
@@ -76,24 +74,15 @@ public class PSPLearnPanel extends JPanel {
         PSP1LearnExplanation.setContentType("");
         PSP1LearnExplanation.setForeground(Color.BLACK);
         PSP1LearnExplanation.setFont(new Font("Arial", Font.PLAIN, 20));
+        PSP1LearnExplanation.setText("PSP1 is all about estimating and planning. You will take the data from PSP0 and use it "
+        		+ "\nto estimate how long your new project will take, then you "
+        		+ "\nwill prpare a test report. Look at the image below to see what an example of a blank "
+        		+ "\ntest report looks like. The Accumulated data from previous projects are used to estimate "
+        		+ "\nthe total time of the new project. After you code you will then write the actual time spent next "
+        		+ "\nto the estimated time. This comparison is then used for creating a schedule for planning "
+        		+ "\nthe rest of the project.");
         
-        PSP1LearnExplanation.setText("Requirements: Engineers start planning by defining the work that needs to be done "
-        		+ "\nin as much detail as possible. If all they have is a one-sentence requirements statement, then that"
-        		+ "\nstatement must be the basis for the plan. Of course, the accuracy of the estimate and plan is"
-        		+ "\nheavily influenced by how much the engineers know about the work to be done.\n"
-        		+ "\nConceptual Design: To make an estimate and a plan, engineers first define how the product"
-        		+ "\nis to be designed and built. However, since the planning phase is too early to produce a complete"
-        		+ "\nproduct design, engineers produce what is called a conceptual design. This is a first,"
-        		+ "\nrough guess at what the product would look like if the engineers had to build it based on what"
-        		+ "\nthey currently know. Later, during the design phase, the engineers examine design alternatives"
-        		+ "\nand produce a complete product design.\n"
-        		+ "\nEstimate Product Size and Resources. The correlation of program size with development"
-        		+ "\ntime is only moderately good for engineering teams and organizations. However, for individual engineers,"
-        		+ "\nthe correlation is generally quite high. Therefore, the PSP starts with engineers estimating the sizes "
-        		+ "\nof the products they will personally develop. Then, based on their personal size and productivity data,"
-        		+ "\nthe engineers estimate the time required to do the work. In the PSP, these size and resource estimates are"
-        		+ "\n made with the PROBE method. Displayed is an example of a PSP1 worksheet.");
-   
+        ImageIcon pic = new ImageIcon("PSP1.png");
         panel.add(PSP1LearnExplanation);
         JLabel label = new JLabel(new ImageIcon("/Users/vvarela15/git/spring16project-JavaScript/src/net/sf/memoranda/ui/resources/PSP1.png"));
         label.setHorizontalAlignment(SwingConstants.LEADING);

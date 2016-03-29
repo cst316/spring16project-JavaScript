@@ -78,9 +78,9 @@ public class PSPLearnPanel extends JPanel {
         PSP1LearnExplanation.setFont(new Font("Arial", Font.PLAIN, 20));
         
         PSP1LearnExplanation.setText("Requirements: Engineers start planning by defining the work that needs to be done "
-        		+ "\nin as much detail as possible. If all they have is a one-sentence requirements statement, then that"
-        		+ "\nstatement must be the basis for the plan. Of course, the accuracy of the estimate and plan is"
-        		+ "\nheavily influenced by how much the engineers know about the work to be done.\n"
+        		+ "\nin as much detail as possible. If all they have is a one-sentence requirements statement, then that \n"
+        		+ "statement must be the basis for the plan. Of course, the accuracy of the estimate and plan is\n"
+        		+ "heavily influenced by how much the engineers know about the work to be done.\n"
         		+ "\nConceptual Design: To make an estimate and a plan, engineers first define how the product"
         		+ "\nis to be designed and built. However, since the planning phase is too early to produce a complete"
         		+ "\nproduct design, engineers produce what is called a conceptual design. This is a first,"
@@ -88,11 +88,7 @@ public class PSPLearnPanel extends JPanel {
         		+ "\nthey currently know. Later, during the design phase, the engineers examine design alternatives"
         		+ "\nand produce a complete product design.\n"
         		+ "\nEstimate Product Size and Resources. The correlation of program size with development"
-        		+ "\ntime is only moderately good for engineering teams and organizations. However, for individual engineers,"
-        		+ "\nthe correlation is generally quite high. Therefore, the PSP starts with engineers estimating the sizes "
-        		+ "\nof the products they will personally develop. Then, based on their personal size and productivity data,"
-        		+ "\nthe engineers estimate the time required to do the work. In the PSP, these size and resource estimates are"
-        		+ "\n made with the PROBE method. Displayed is an example of a PSP1 worksheet.");
+        		+ "\ntime is only moderately good for engineering teams and organizations. However, for individ");
    
         panel.add(PSP1LearnExplanation);
         JLabel label = new JLabel(new ImageIcon("/Users/vvarela15/git/spring16project-JavaScript/src/net/sf/memoranda/ui/resources/PSP1.png"));
