@@ -99,11 +99,6 @@ public class PSPLearnPanel extends JPanel {
         label.setHorizontalAlignment(SwingConstants.LEADING);
         label.setVerticalAlignment(SwingConstants.BOTTOM);
         panel.add(label);
-        
-        JLabel workCited = new JLabel("Humphrey, Watts S. \"Personal Software Process (PSP).\" Encyclopedia of Software Engineering (2002): n. pag. Web. 28 Mar. 2016.");
-        workCited.setFont(new Font("Arial", Font.ITALIC, 10));
-        workCited.setVerticalAlignment(SwingConstants.BOTTOM);
-        panel.add(workCited);
     }
        	
  }
