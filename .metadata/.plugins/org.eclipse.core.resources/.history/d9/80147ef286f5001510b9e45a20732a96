@@ -82,12 +82,10 @@ public class PSPLearnPanel extends JPanel {
         		+ "\nto the estimated time. This comparison is then used for creating a schedule for planning "
         		+ "\nthe rest of the project.");
         
-        ImageIcon pic = new ImageIcon("PSP1.png");
+        //BufferedImage myPicture = ImageIO.read(new File("/net.sf.memoranda.ui.resources/PSP1.png"));
+        //JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+       // add(picLabel);
         panel.add(PSP1LearnExplanation);
-        JLabel label = new JLabel(new ImageIcon("/Users/vvarela15/git/spring16project-JavaScript/src/net/sf/memoranda/ui/resources/PSP1.png"));
-        label.setHorizontalAlignment(SwingConstants.LEADING);
-        label.setVerticalAlignment(SwingConstants.BOTTOM);
-        panel.add(label);
     }
        	
  }

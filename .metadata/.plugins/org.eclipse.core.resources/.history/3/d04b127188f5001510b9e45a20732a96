@@ -83,11 +83,8 @@ public class PSPLearnPanel extends JPanel {
         		+ "\nthe rest of the project.");
         
         ImageIcon pic = new ImageIcon("PSP1.png");
+        panel.add(new JLabel(pic));
         panel.add(PSP1LearnExplanation);
-        JLabel label = new JLabel(new ImageIcon("/Users/vvarela15/git/spring16project-JavaScript/src/net/sf/memoranda/ui/resources/PSP1.png"));
-        label.setHorizontalAlignment(SwingConstants.LEADING);
-        label.setVerticalAlignment(SwingConstants.BOTTOM);
-        panel.add(label);
     }
        	
  }
