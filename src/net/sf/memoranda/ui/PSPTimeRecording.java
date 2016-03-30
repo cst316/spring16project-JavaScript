@@ -182,6 +182,9 @@ public class PSPTimeRecording extends JPanel {
         Dimension date1Size = date1.getPreferredSize();
         date1.setBounds(60 + insets.left, 40 + dateSize.height + titleSize.height + insets.top, date1Size.width, date1Size.height);
         
+        
+        
+        
         date2.setSize(12, 45);
         date2.setFont(date1Font);
         Dimension date2Size = date2.getPreferredSize();
