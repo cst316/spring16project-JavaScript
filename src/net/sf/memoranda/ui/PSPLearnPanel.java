@@ -42,7 +42,6 @@ public class PSPLearnPanel extends JPanel {
 	PSPLProjectSummary projectSummaryPanel = new PSPLProjectSummary();
 	PSPLDesignForm designFormPanel = new PSPLDesignForm();
 	PSPLTimeRecording timeRecordingPanel = new PSPLTimeRecording();
-	PSPLDefectRecording defectRecordingPanel = new PSPLDefectRecording();
 	
     JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -59,10 +58,9 @@ public class PSPLearnPanel extends JPanel {
     	
         this.setLayout(borderLayout1);
         
-        tabbedPane.add("Project Summary", projectSummaryPanel);
-        tabbedPane.add("Design Form", designFormPanel);
-        tabbedPane.add("Time Recording", timeRecordingPanel);
-        tabbedPane.add("Defect Recording", defectRecordingPanel);
+        tabbedPane.add("PSP0", projectSummaryPanel);
+        tabbedPane.add("PSP1", designFormPanel);
+        tabbedPane.add("PSP2", timeRecordingPanel);
         
         add(tabbedPane);
     }
