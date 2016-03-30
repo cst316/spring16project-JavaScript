@@ -1,14 +1,6 @@
 package net.sf.memoranda.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 import java.awt.Font;
 import java.awt.Insets;
 import java.io.File;
@@ -18,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
+ * PSPTimeRecording.java
+ * 
  * PSPTimeRecording is a UI component that allows users to
  * record their time logs while working on a project.
  * Time Recording is a part of the Personal Software Process
@@ -132,7 +126,6 @@ public class PSPTimeRecording extends JPanel {
 	 * if no exceptions are caught.
 	 * 
 	 */
-	
     public PSPTimeRecording() {
     	
         try {
@@ -244,9 +237,9 @@ public class PSPTimeRecording extends JPanel {
         date9.setBounds(60 + insets.left, 40 + date8Size.height + date7Size.height + date6Size.height + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + 
         									titleSize.height + insets.top, date1Size.width, date1Size.height);
         
+        //Got rid of variable not being used
         date10.setSize(12, 45);
         date10.setFont(date1Font);
-        Dimension date10Size = date10.getPreferredSize();
         date10.setBounds(60 + insets.left, 40 + date9Size.height + date8Size.height + date7Size.height + date6Size.height + date5Size.height + date4Size.height + date3Size.height + date1Size.height + date2Size.height + dateSize.height + 
         									titleSize.height + insets.top, date1Size.width, date1Size.height);
         
@@ -304,9 +297,9 @@ public class PSPTimeRecording extends JPanel {
         start9.setBounds(70 + insets.left + date1Size.width, 40 + start8Size.height + start7Size.height + start6Size.height + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + 
         									titleSize.height + insets.top, start1Size.width, start1Size.height);
         
+        //Got rid of variable not being used
         start10.setSize(12, 45);
         start10.setFont(date1Font);
-        Dimension start10Size = start10.getPreferredSize();
         start10.setBounds(70 + insets.left + date1Size.width, 40 + start9Size.height + start8Size.height + start7Size.height + start6Size.height + start5Size.height + start4Size.height + start3Size.height + start2Size.height + start1Size.height + startSize.height + 
         									titleSize.height + insets.top, start1Size.width, start1Size.height);
         
@@ -364,9 +357,9 @@ public class PSPTimeRecording extends JPanel {
         stop9.setBounds(80 + insets.left + date1Size.width + start1Size.width, 
         									40 + stop8Size.height + stop7Size.height + stop6Size.height + stop5Size.height + stop4Size.height + stop3Size.height + stop2Size.height + stop1Size.height + titleSize.height + stopSize.height + insets.top, stop1Size.width, stop1Size.height);
         
+        //Got rid of variable not being used
         stop10.setSize(12, 45);
         stop10.setFont(date1Font);
-        Dimension stop10Size = stop10.getPreferredSize();
         stop10.setBounds(80 + insets.left + date1Size.width + start1Size.width, 
         									40 + stop9Size.height + stop8Size.height + stop7Size.height + stop6Size.height + stop5Size.height + stop4Size.height + stop3Size.height + stop2Size.height + stop1Size.height + titleSize.height + stopSize.height + insets.top, stop1Size.width, stop1Size.height);
         
@@ -425,14 +418,14 @@ public class PSPTimeRecording extends JPanel {
         phase9.setBounds(90 + insets.left + date1Size.width + start1Size.width + stop1Size.width, 40 + phase8Size.height + phase7Size.height + phase6Size.height + phase5Size.height + phase4Size.height + phase3Size.height + phase2Size.height + phase1Size.height + titleSize.height + 
         									phaseSize.height +insets.top, phase1Size.width, phase1Size.height);
         
+        //Got rid of variable not being used
         phase10.setSize(12, 45);
         phase10.setFont(date1Font);
-        Dimension phase10Size = phase10.getPreferredSize();
         phase10.setBounds(90 + insets.left + date1Size.width + start1Size.width + stop1Size.width, 40 + phase9Size.height + phase8Size.height + phase7Size.height + phase6Size.height + phase5Size.height + phase4Size.height + phase3Size.height + phase2Size.height + phase1Size.height + titleSize.height + 
         									phaseSize.height +insets.top, phase1Size.width, phase1Size.height);
         
         
-        //Commnets text fields
+        //Comments text fields
         comments1.setSize(12, 45);
         comments1.setFont(date1Font);
         Dimension comments1Size = comments1.getPreferredSize();
@@ -486,9 +479,9 @@ public class PSPTimeRecording extends JPanel {
         comments9.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments8Size.height + comments7Size.height + comments6Size.height + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + 
         									commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
         
+        //Got rid of variable not being used
         comments10.setSize(12, 45);
         comments10.setFont(date1Font);
-        Dimension comments10Size = comments10.getPreferredSize();
         comments10.setBounds(100 + insets.left + date1Size.width + start1Size.width + stop1Size.width + phase1Size.width, 40 + comments9Size.height + comments8Size.height + comments7Size.height + comments6Size.height + comments5Size.height + comments4Size.height + comments3Size.height + comments2Size.height + comments1Size.height + titleSize.height + 
         									commentsSize.height + insets.top, comments1Size.width, comments1Size.height);
         
