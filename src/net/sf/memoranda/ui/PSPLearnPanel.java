@@ -3,6 +3,7 @@ package net.sf.memoranda.ui;
 import java.awt.BorderLayout;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -38,10 +39,13 @@ import java.io.*;
 
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPLearnPanel extends JPanel {
-    BorderLayout borderLayout1 = new BorderLayout();
-	//PSPLearn_0 psp0 = new PSPLearn_0();
-	//PSPDesignFormLearn psp1 = new PSPDesignForm();
-	//PSPTimeRecording psp2 = new PSPTimeRecording();	
+	private static final Component PSP0 = null;
+	private static final Component PSP1 = null;
+	private static final Component PSP2 = null;
+	BorderLayout borderLayout1 = new BorderLayout();
+	PSP0 projectSummaryPanel = new PSP0();
+	PSP1 designFormPanel = new PSP1();
+	PSP2 timeRecordingPanel = new PSP2();
 	
     JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -58,11 +62,11 @@ public class PSPLearnPanel extends JPanel {
     	
         this.setLayout(borderLayout1);
         
-       // tabbedPane.add("Learn PSP0", psp0);
-        //tabbedPane.add("Learn PSP1", psp1);
-        //tabbedPane.add("Learn PSP2", psp2);
+        tabbedPane.add("PSP0", PSP0);
+        tabbedPane.add("PSP1", PSP1);
+        tabbedPane.add("PSP2", PSP2);
         
-       // add(tabbedPane);
+        add(tabbedPane);
     }
        	
  }

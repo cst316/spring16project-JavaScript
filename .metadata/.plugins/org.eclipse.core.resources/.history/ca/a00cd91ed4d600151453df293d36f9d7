@@ -1,0 +1,972 @@
+package net.sf.memoranda.ui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JToolBar;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import net.sf.memoranda.CurrentProject;
+import net.sf.memoranda.Resource;
+import net.sf.memoranda.ui.ResourcesPanel.PopupListener;
+import net.sf.memoranda.util.AppList;
+import net.sf.memoranda.util.CurrentStorage;
+import net.sf.memoranda.util.Local;
+import net.sf.memoranda.util.MimeType;
+import net.sf.memoranda.util.MimeTypesList;
+import net.sf.memoranda.util.Util;
+
+import java.io.*;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+/*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
+public class PSPDefectRecording extends JPanel {
+	private JTextField nameTitleField;
+	private JTextField projectTitleField;
+	private JTextField dateTitleField;
+	private JTextField programNumField;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_1;
+	private JTextField textField_12;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JTextField textField_17;
+	private JTextField textField_18;
+	private JTextField textField_19;
+	private JTextField textField_20;
+	private JTextField textField_21;
+	private JTextField textField_22;
+	private JTextField textField_23;
+	private JTextField textField_24;
+	private JTextField textField_25;
+	private JTextField textField_26;
+	private JTextField textField_27;
+	private JTextField textField_28;
+	private JTextField textField_29;
+	private JTextField textField_30;
+	private JTextField textField_31;
+	private JTextField textField_32;
+	private JTextField textField_33;
+	private JTextField textField_34;
+	private JTextField textField_35;
+	private JTextField textField_36;
+	private JTextField textField_37;
+	private JTextField textField_38;
+	private JTextField textField_39;
+	private JTextField textField_40;
+	private JTextField textField_41;
+	private JTextField textField_42;
+	private JTextField textField_43;
+	private JTextField textField_44;
+	private JTextField textField_45;
+	private JTextField textField_46;
+    
+    public PSPDefectRecording() {
+    	
+    	JLabel nameTitleLabel = new JLabel("Name:");
+    	
+    	nameTitleField = new JTextField();
+    	nameTitleField.setColumns(10);
+    	
+    	JLabel projectTitleLabel = new JLabel("Project:");
+    	
+    	projectTitleField = new JTextField();
+    	projectTitleField.setColumns(10);
+    	
+    	JLabel dateTitleLabel = new JLabel("Date:");
+    	
+    	dateTitleField = new JTextField();
+    	dateTitleField.setColumns(10);
+    	
+    	JLabel programNumLabel = new JLabel("Program #:");
+    	
+    	programNumField = new JTextField();
+    	programNumField.setColumns(10);
+    	
+    	JPanel defectPanel1 = new JPanel();
+    	GridBagLayout gbl_defectPanel1 = new GridBagLayout();
+    	gbl_defectPanel1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    	gbl_defectPanel1.rowHeights = new int[]{0, 0, 0, 0};
+    	gbl_defectPanel1.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	gbl_defectPanel1.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	defectPanel1.setLayout(gbl_defectPanel1);
+    	
+    	JLabel projectLabel1 = new JLabel("Project");
+    	GridBagConstraints gbc_projectLabel1 = new GridBagConstraints();
+    	gbc_projectLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectLabel1.gridx = 0;
+    	gbc_projectLabel1.gridy = 0;
+    	defectPanel1.add(projectLabel1, gbc_projectLabel1);
+    	
+    	JLabel dateLabel1 = new JLabel("Date");
+    	GridBagConstraints gbc_dateLabel1 = new GridBagConstraints();
+    	gbc_dateLabel1.anchor = GridBagConstraints.NORTH;
+    	gbc_dateLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel1.gridx = 1;
+    	gbc_dateLabel1.gridy = 0;
+    	defectPanel1.add(dateLabel1, gbc_dateLabel1);
+    	
+    	JLabel numberLabel1 = new JLabel("Number");
+    	GridBagConstraints gbc_numberLabel1 = new GridBagConstraints();
+    	gbc_numberLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberLabel1.gridx = 2;
+    	gbc_numberLabel1.gridy = 0;
+    	defectPanel1.add(numberLabel1, gbc_numberLabel1);
+    	
+    	JLabel typeLabel1 = new JLabel("Type");
+    	GridBagConstraints gbc_typeLabel1 = new GridBagConstraints();
+    	gbc_typeLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeLabel1.gridx = 3;
+    	gbc_typeLabel1.gridy = 0;
+    	defectPanel1.add(typeLabel1, gbc_typeLabel1);
+    	
+    	JLabel injectLabel1 = new JLabel("Inject");
+    	GridBagConstraints gbc_injectLabel1 = new GridBagConstraints();
+    	gbc_injectLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectLabel1.gridx = 4;
+    	gbc_injectLabel1.gridy = 0;
+    	defectPanel1.add(injectLabel1, gbc_injectLabel1);
+    	
+    	JLabel removeLabel1 = new JLabel("Remove");
+    	GridBagConstraints gbc_removeLabel1 = new GridBagConstraints();
+    	gbc_removeLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeLabel1.gridx = 5;
+    	gbc_removeLabel1.gridy = 0;
+    	defectPanel1.add(removeLabel1, gbc_removeLabel1);
+    	
+    	JLabel fixTimeLabel1 = new JLabel("Fix Time");
+    	GridBagConstraints gbc_fixTimeLabel1 = new GridBagConstraints();
+    	gbc_fixTimeLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimeLabel1.gridx = 6;
+    	gbc_fixTimeLabel1.gridy = 0;
+    	defectPanel1.add(fixTimeLabel1, gbc_fixTimeLabel1);
+    	
+    	JLabel fixRefLabel1 = new JLabel("Fix Ref");
+    	GridBagConstraints gbc_fixRefLabel1 = new GridBagConstraints();
+    	gbc_fixRefLabel1.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefLabel1.gridx = 7;
+    	gbc_fixRefLabel1.gridy = 0;
+    	defectPanel1.add(fixRefLabel1, gbc_fixRefLabel1);
+    	
+    	textField_3 = new JTextField();
+    	textField_3.setColumns(10);
+    	GridBagConstraints gbc_textField_3 = new GridBagConstraints();
+    	gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_3.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_3.gridx = 0;
+    	gbc_textField_3.gridy = 1;
+    	defectPanel1.add(textField_3, gbc_textField_3);
+    	
+    	textField_4 = new JTextField();
+    	textField_4.setColumns(10);
+    	GridBagConstraints gbc_textField_4 = new GridBagConstraints();
+    	gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_4.gridx = 1;
+    	gbc_textField_4.gridy = 1;
+    	defectPanel1.add(textField_4, gbc_textField_4);
+    	
+    	textField_5 = new JTextField();
+    	textField_5.setColumns(10);
+    	GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+    	gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_5.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_5.gridx = 2;
+    	gbc_textField_5.gridy = 1;
+    	defectPanel1.add(textField_5, gbc_textField_5);
+    	
+    	textField_6 = new JTextField();
+    	textField_6.setColumns(10);
+    	GridBagConstraints gbc_textField_6 = new GridBagConstraints();
+    	gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_6.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_6.gridx = 3;
+    	gbc_textField_6.gridy = 1;
+    	defectPanel1.add(textField_6, gbc_textField_6);
+    	
+    	textField_7 = new JTextField();
+    	textField_7.setColumns(10);
+    	GridBagConstraints gbc_textField_7 = new GridBagConstraints();
+    	gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_7.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_7.gridx = 4;
+    	gbc_textField_7.gridy = 1;
+    	defectPanel1.add(textField_7, gbc_textField_7);
+    	
+    	textField_8 = new JTextField();
+    	textField_8.setColumns(10);
+    	GridBagConstraints gbc_textField_8 = new GridBagConstraints();
+    	gbc_textField_8.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_8.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_8.gridx = 5;
+    	gbc_textField_8.gridy = 1;
+    	defectPanel1.add(textField_8, gbc_textField_8);
+    	
+    	textField_9 = new JTextField();
+    	textField_9.setColumns(10);
+    	GridBagConstraints gbc_textField_9 = new GridBagConstraints();
+    	gbc_textField_9.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_9.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_9.gridx = 6;
+    	gbc_textField_9.gridy = 1;
+    	defectPanel1.add(textField_9, gbc_textField_9);
+    	
+    	textField_10 = new JTextField();
+    	textField_10.setColumns(10);
+    	GridBagConstraints gbc_textField_10 = new GridBagConstraints();
+    	gbc_textField_10.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_10.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_10.gridx = 7;
+    	gbc_textField_10.gridy = 1;
+    	defectPanel1.add(textField_10, gbc_textField_10);
+    	
+    	JLabel label_8 = new JLabel("Description");
+    	GridBagConstraints gbc_label_8 = new GridBagConstraints();
+    	gbc_label_8.anchor = GridBagConstraints.EAST;
+    	gbc_label_8.insets = new Insets(0, 0, 0, 5);
+    	gbc_label_8.gridx = 0;
+    	gbc_label_8.gridy = 2;
+    	defectPanel1.add(label_8, gbc_label_8);
+    	
+    	textField_11 = new JTextField();
+    	textField_11.setColumns(10);
+    	GridBagConstraints gbc_textField_11 = new GridBagConstraints();
+    	gbc_textField_11.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_11.gridwidth = 7;
+    	gbc_textField_11.insets = new Insets(0, 0, 0, 5);
+    	gbc_textField_11.gridx = 1;
+    	gbc_textField_11.gridy = 2;
+    	defectPanel1.add(textField_11, gbc_textField_11);
+    	
+    	JPanel defectPanel2 = new JPanel();
+    	GridBagLayout gbl_defectPanel2 = new GridBagLayout();
+    	gbl_defectPanel2.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    	gbl_defectPanel2.rowHeights = new int[]{0, 0, 0, 0};
+    	gbl_defectPanel2.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	gbl_defectPanel2.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	defectPanel2.setLayout(gbl_defectPanel2);
+    	
+    	JLabel projectLabel2 = new JLabel("Project");
+    	GridBagConstraints gbc_projectLabel2 = new GridBagConstraints();
+    	gbc_projectLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectLabel2.gridx = 0;
+    	gbc_projectLabel2.gridy = 0;
+    	defectPanel2.add(projectLabel2, gbc_projectLabel2);
+    	
+    	JLabel dateLabel2 = new JLabel("Date");
+    	GridBagConstraints gbc_dateLabel2 = new GridBagConstraints();
+    	gbc_dateLabel2.anchor = GridBagConstraints.NORTH;
+    	gbc_dateLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel2.gridx = 1;
+    	gbc_dateLabel2.gridy = 0;
+    	defectPanel2.add(dateLabel2, gbc_dateLabel2);
+    	
+    	JLabel numberLabel2 = new JLabel("Number");
+    	GridBagConstraints gbc_numberLabel2 = new GridBagConstraints();
+    	gbc_numberLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberLabel2.gridx = 2;
+    	gbc_numberLabel2.gridy = 0;
+    	defectPanel2.add(numberLabel2, gbc_numberLabel2);
+    	
+    	JLabel typeLabel2 = new JLabel("Type");
+    	GridBagConstraints gbc_typeLabel2 = new GridBagConstraints();
+    	gbc_typeLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeLabel2.gridx = 3;
+    	gbc_typeLabel2.gridy = 0;
+    	defectPanel2.add(typeLabel2, gbc_typeLabel2);
+    	
+    	JLabel injectLabel2 = new JLabel("Inject");
+    	GridBagConstraints gbc_injectLabel2 = new GridBagConstraints();
+    	gbc_injectLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectLabel2.gridx = 4;
+    	gbc_injectLabel2.gridy = 0;
+    	defectPanel2.add(injectLabel2, gbc_injectLabel2);
+    	
+    	JLabel removeLabel2 = new JLabel("Remove");
+    	GridBagConstraints gbc_removeLabel2 = new GridBagConstraints();
+    	gbc_removeLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeLabel2.gridx = 5;
+    	gbc_removeLabel2.gridy = 0;
+    	defectPanel2.add(removeLabel2, gbc_removeLabel2);
+    	
+    	JLabel fixTimeLabel2 = new JLabel("Fix Time");
+    	GridBagConstraints gbc_fixTimeLabel2 = new GridBagConstraints();
+    	gbc_fixTimeLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimeLabel2.gridx = 6;
+    	gbc_fixTimeLabel2.gridy = 0;
+    	defectPanel2.add(fixTimeLabel2, gbc_fixTimeLabel2);
+    	
+    	JLabel fixRefLabel2 = new JLabel("Fix Ref");
+    	GridBagConstraints gbc_fixRefLabel2 = new GridBagConstraints();
+    	gbc_fixRefLabel2.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefLabel2.gridx = 7;
+    	gbc_fixRefLabel2.gridy = 0;
+    	defectPanel2.add(fixRefLabel2, gbc_fixRefLabel2);
+    	
+    	textField_1 = new JTextField();
+    	textField_1.setColumns(10);
+    	GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+    	gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_1.gridx = 0;
+    	gbc_textField_1.gridy = 1;
+    	defectPanel2.add(textField_1, gbc_textField_1);
+    	
+    	textField_12 = new JTextField();
+    	textField_12.setColumns(10);
+    	GridBagConstraints gbc_textField_12 = new GridBagConstraints();
+    	gbc_textField_12.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_12.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_12.gridx = 1;
+    	gbc_textField_12.gridy = 1;
+    	defectPanel2.add(textField_12, gbc_textField_12);
+    	
+    	textField_13 = new JTextField();
+    	textField_13.setColumns(10);
+    	GridBagConstraints gbc_textField_13 = new GridBagConstraints();
+    	gbc_textField_13.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_13.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_13.gridx = 2;
+    	gbc_textField_13.gridy = 1;
+    	defectPanel2.add(textField_13, gbc_textField_13);
+    	
+    	textField_14 = new JTextField();
+    	textField_14.setColumns(10);
+    	GridBagConstraints gbc_textField_14 = new GridBagConstraints();
+    	gbc_textField_14.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_14.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_14.gridx = 3;
+    	gbc_textField_14.gridy = 1;
+    	defectPanel2.add(textField_14, gbc_textField_14);
+    	
+    	textField_15 = new JTextField();
+    	textField_15.setColumns(10);
+    	GridBagConstraints gbc_textField_15 = new GridBagConstraints();
+    	gbc_textField_15.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_15.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_15.gridx = 4;
+    	gbc_textField_15.gridy = 1;
+    	defectPanel2.add(textField_15, gbc_textField_15);
+    	
+    	textField_16 = new JTextField();
+    	textField_16.setColumns(10);
+    	GridBagConstraints gbc_textField_16 = new GridBagConstraints();
+    	gbc_textField_16.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_16.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_16.gridx = 5;
+    	gbc_textField_16.gridy = 1;
+    	defectPanel2.add(textField_16, gbc_textField_16);
+    	
+    	textField_17 = new JTextField();
+    	textField_17.setColumns(10);
+    	GridBagConstraints gbc_textField_17 = new GridBagConstraints();
+    	gbc_textField_17.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_17.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_17.gridx = 6;
+    	gbc_textField_17.gridy = 1;
+    	defectPanel2.add(textField_17, gbc_textField_17);
+    	
+    	textField_18 = new JTextField();
+    	textField_18.setColumns(10);
+    	GridBagConstraints gbc_textField_18 = new GridBagConstraints();
+    	gbc_textField_18.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_18.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_18.gridx = 7;
+    	gbc_textField_18.gridy = 1;
+    	defectPanel2.add(textField_18, gbc_textField_18);
+    	
+    	JLabel label_17 = new JLabel("Description");
+    	GridBagConstraints gbc_label_17 = new GridBagConstraints();
+    	gbc_label_17.anchor = GridBagConstraints.EAST;
+    	gbc_label_17.insets = new Insets(0, 0, 0, 5);
+    	gbc_label_17.gridx = 0;
+    	gbc_label_17.gridy = 2;
+    	defectPanel2.add(label_17, gbc_label_17);
+    	
+    	textField_19 = new JTextField();
+    	textField_19.setColumns(10);
+    	GridBagConstraints gbc_textField_19 = new GridBagConstraints();
+    	gbc_textField_19.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_19.gridwidth = 7;
+    	gbc_textField_19.insets = new Insets(0, 0, 0, 5);
+    	gbc_textField_19.gridx = 1;
+    	gbc_textField_19.gridy = 2;
+    	defectPanel2.add(textField_19, gbc_textField_19);
+    	
+    	JPanel defectPanel3 = new JPanel();
+    	GridBagLayout gbl_defectPanel3 = new GridBagLayout();
+    	gbl_defectPanel3.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    	gbl_defectPanel3.rowHeights = new int[]{0, 0, 0, 0};
+    	gbl_defectPanel3.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	gbl_defectPanel3.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	defectPanel3.setLayout(gbl_defectPanel3);
+    	
+    	JLabel projectLabel3 = new JLabel("Project");
+    	GridBagConstraints gbc_projectLabel3 = new GridBagConstraints();
+    	gbc_projectLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectLabel3.gridx = 0;
+    	gbc_projectLabel3.gridy = 0;
+    	defectPanel3.add(projectLabel3, gbc_projectLabel3);
+    	
+    	JLabel dateLabel3 = new JLabel("Date");
+    	GridBagConstraints gbc_dateLabel3 = new GridBagConstraints();
+    	gbc_dateLabel3.anchor = GridBagConstraints.NORTH;
+    	gbc_dateLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel3.gridx = 1;
+    	gbc_dateLabel3.gridy = 0;
+    	defectPanel3.add(dateLabel3, gbc_dateLabel3);
+    	
+    	JLabel numberLabel3 = new JLabel("Number");
+    	GridBagConstraints gbc_numberLabel3 = new GridBagConstraints();
+    	gbc_numberLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberLabel3.gridx = 2;
+    	gbc_numberLabel3.gridy = 0;
+    	defectPanel3.add(numberLabel3, gbc_numberLabel3);
+    	
+    	JLabel typeLabel3 = new JLabel("Type");
+    	GridBagConstraints gbc_typeLabel3 = new GridBagConstraints();
+    	gbc_typeLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeLabel3.gridx = 3;
+    	gbc_typeLabel3.gridy = 0;
+    	defectPanel3.add(typeLabel3, gbc_typeLabel3);
+    	
+    	JLabel injectLabel3 = new JLabel("Inject");
+    	GridBagConstraints gbc_injectLabel3 = new GridBagConstraints();
+    	gbc_injectLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectLabel3.gridx = 4;
+    	gbc_injectLabel3.gridy = 0;
+    	defectPanel3.add(injectLabel3, gbc_injectLabel3);
+    	
+    	JLabel removeLabel3 = new JLabel("Remove");
+    	GridBagConstraints gbc_removeLabel3 = new GridBagConstraints();
+    	gbc_removeLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeLabel3.gridx = 5;
+    	gbc_removeLabel3.gridy = 0;
+    	defectPanel3.add(removeLabel3, gbc_removeLabel3);
+    	
+    	JLabel fixTimeLabel3 = new JLabel("Fix Time");
+    	GridBagConstraints gbc_fixTimeLabel3 = new GridBagConstraints();
+    	gbc_fixTimeLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimeLabel3.gridx = 6;
+    	gbc_fixTimeLabel3.gridy = 0;
+    	defectPanel3.add(fixTimeLabel3, gbc_fixTimeLabel3);
+    	
+    	JLabel fixRefLabel3 = new JLabel("Fix Ref");
+    	GridBagConstraints gbc_fixRefLabel3 = new GridBagConstraints();
+    	gbc_fixRefLabel3.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefLabel3.gridx = 7;
+    	gbc_fixRefLabel3.gridy = 0;
+    	defectPanel3.add(fixRefLabel3, gbc_fixRefLabel3);
+    	
+    	textField_20 = new JTextField();
+    	textField_20.setColumns(10);
+    	GridBagConstraints gbc_textField_20 = new GridBagConstraints();
+    	gbc_textField_20.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_20.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_20.gridx = 0;
+    	gbc_textField_20.gridy = 1;
+    	defectPanel3.add(textField_20, gbc_textField_20);
+    	
+    	textField_21 = new JTextField();
+    	textField_21.setColumns(10);
+    	GridBagConstraints gbc_textField_21 = new GridBagConstraints();
+    	gbc_textField_21.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_21.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_21.gridx = 1;
+    	gbc_textField_21.gridy = 1;
+    	defectPanel3.add(textField_21, gbc_textField_21);
+    	
+    	textField_22 = new JTextField();
+    	textField_22.setColumns(10);
+    	GridBagConstraints gbc_textField_22 = new GridBagConstraints();
+    	gbc_textField_22.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_22.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_22.gridx = 2;
+    	gbc_textField_22.gridy = 1;
+    	defectPanel3.add(textField_22, gbc_textField_22);
+    	
+    	textField_23 = new JTextField();
+    	textField_23.setColumns(10);
+    	GridBagConstraints gbc_textField_23 = new GridBagConstraints();
+    	gbc_textField_23.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_23.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_23.gridx = 3;
+    	gbc_textField_23.gridy = 1;
+    	defectPanel3.add(textField_23, gbc_textField_23);
+    	
+    	textField_24 = new JTextField();
+    	textField_24.setColumns(10);
+    	GridBagConstraints gbc_textField_24 = new GridBagConstraints();
+    	gbc_textField_24.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_24.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_24.gridx = 4;
+    	gbc_textField_24.gridy = 1;
+    	defectPanel3.add(textField_24, gbc_textField_24);
+    	
+    	textField_25 = new JTextField();
+    	textField_25.setColumns(10);
+    	GridBagConstraints gbc_textField_25 = new GridBagConstraints();
+    	gbc_textField_25.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_25.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_25.gridx = 5;
+    	gbc_textField_25.gridy = 1;
+    	defectPanel3.add(textField_25, gbc_textField_25);
+    	
+    	textField_26 = new JTextField();
+    	textField_26.setColumns(10);
+    	GridBagConstraints gbc_textField_26 = new GridBagConstraints();
+    	gbc_textField_26.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_26.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_26.gridx = 6;
+    	gbc_textField_26.gridy = 1;
+    	defectPanel3.add(textField_26, gbc_textField_26);
+    	
+    	textField_27 = new JTextField();
+    	textField_27.setColumns(10);
+    	GridBagConstraints gbc_textField_27 = new GridBagConstraints();
+    	gbc_textField_27.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_27.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_27.gridx = 7;
+    	gbc_textField_27.gridy = 1;
+    	defectPanel3.add(textField_27, gbc_textField_27);
+    	
+    	JLabel label_26 = new JLabel("Description");
+    	GridBagConstraints gbc_label_26 = new GridBagConstraints();
+    	gbc_label_26.anchor = GridBagConstraints.EAST;
+    	gbc_label_26.insets = new Insets(0, 0, 0, 5);
+    	gbc_label_26.gridx = 0;
+    	gbc_label_26.gridy = 2;
+    	defectPanel3.add(label_26, gbc_label_26);
+    	
+    	textField_28 = new JTextField();
+    	textField_28.setColumns(10);
+    	GridBagConstraints gbc_textField_28 = new GridBagConstraints();
+    	gbc_textField_28.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_28.gridwidth = 7;
+    	gbc_textField_28.insets = new Insets(0, 0, 0, 5);
+    	gbc_textField_28.gridx = 1;
+    	gbc_textField_28.gridy = 2;
+    	defectPanel3.add(textField_28, gbc_textField_28);
+    	
+    	JPanel defectPanel4 = new JPanel();
+    	GridBagLayout gbl_defectPanel4 = new GridBagLayout();
+    	gbl_defectPanel4.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    	gbl_defectPanel4.rowHeights = new int[]{0, 0, 0, 0};
+    	gbl_defectPanel4.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	gbl_defectPanel4.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	defectPanel4.setLayout(gbl_defectPanel4);
+    	
+    	JLabel projectLabel4 = new JLabel("Project");
+    	GridBagConstraints gbc_projectLabel4 = new GridBagConstraints();
+    	gbc_projectLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectLabel4.gridx = 0;
+    	gbc_projectLabel4.gridy = 0;
+    	defectPanel4.add(projectLabel4, gbc_projectLabel4);
+    	
+    	JLabel dateLabel4 = new JLabel("Date");
+    	GridBagConstraints gbc_dateLabel4 = new GridBagConstraints();
+    	gbc_dateLabel4.anchor = GridBagConstraints.NORTH;
+    	gbc_dateLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel4.gridx = 1;
+    	gbc_dateLabel4.gridy = 0;
+    	defectPanel4.add(dateLabel4, gbc_dateLabel4);
+    	
+    	JLabel numberLabel4_1 = new JLabel("Number");
+    	GridBagConstraints gbc_numberLabel4_1 = new GridBagConstraints();
+    	gbc_numberLabel4_1.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberLabel4_1.gridx = 2;
+    	gbc_numberLabel4_1.gridy = 0;
+    	defectPanel4.add(numberLabel4_1, gbc_numberLabel4_1);
+    	
+    	JLabel typeLabel4 = new JLabel("Type");
+    	GridBagConstraints gbc_typeLabel4 = new GridBagConstraints();
+    	gbc_typeLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeLabel4.gridx = 3;
+    	gbc_typeLabel4.gridy = 0;
+    	defectPanel4.add(typeLabel4, gbc_typeLabel4);
+    	
+    	JLabel injectLabel4 = new JLabel("Inject");
+    	GridBagConstraints gbc_injectLabel4 = new GridBagConstraints();
+    	gbc_injectLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectLabel4.gridx = 4;
+    	gbc_injectLabel4.gridy = 0;
+    	defectPanel4.add(injectLabel4, gbc_injectLabel4);
+    	
+    	JLabel removeLabel4 = new JLabel("Remove");
+    	GridBagConstraints gbc_removeLabel4 = new GridBagConstraints();
+    	gbc_removeLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeLabel4.gridx = 5;
+    	gbc_removeLabel4.gridy = 0;
+    	defectPanel4.add(removeLabel4, gbc_removeLabel4);
+    	
+    	JLabel fixTimeLabel4 = new JLabel("Fix Time");
+    	GridBagConstraints gbc_fixTimeLabel4 = new GridBagConstraints();
+    	gbc_fixTimeLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimeLabel4.gridx = 6;
+    	gbc_fixTimeLabel4.gridy = 0;
+    	defectPanel4.add(fixTimeLabel4, gbc_fixTimeLabel4);
+    	
+    	JLabel fixRefLabel4 = new JLabel("Fix Ref");
+    	GridBagConstraints gbc_fixRefLabel4 = new GridBagConstraints();
+    	gbc_fixRefLabel4.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefLabel4.gridx = 7;
+    	gbc_fixRefLabel4.gridy = 0;
+    	defectPanel4.add(fixRefLabel4, gbc_fixRefLabel4);
+    	
+    	textField_29 = new JTextField();
+    	textField_29.setColumns(10);
+    	GridBagConstraints gbc_textField_29 = new GridBagConstraints();
+    	gbc_textField_29.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_29.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_29.gridx = 0;
+    	gbc_textField_29.gridy = 1;
+    	defectPanel4.add(textField_29, gbc_textField_29);
+    	
+    	textField_30 = new JTextField();
+    	textField_30.setColumns(10);
+    	GridBagConstraints gbc_textField_30 = new GridBagConstraints();
+    	gbc_textField_30.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_30.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_30.gridx = 1;
+    	gbc_textField_30.gridy = 1;
+    	defectPanel4.add(textField_30, gbc_textField_30);
+    	
+    	textField_31 = new JTextField();
+    	textField_31.setColumns(10);
+    	GridBagConstraints gbc_textField_31 = new GridBagConstraints();
+    	gbc_textField_31.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_31.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_31.gridx = 2;
+    	gbc_textField_31.gridy = 1;
+    	defectPanel4.add(textField_31, gbc_textField_31);
+    	
+    	textField_32 = new JTextField();
+    	textField_32.setColumns(10);
+    	GridBagConstraints gbc_textField_32 = new GridBagConstraints();
+    	gbc_textField_32.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_32.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_32.gridx = 3;
+    	gbc_textField_32.gridy = 1;
+    	defectPanel4.add(textField_32, gbc_textField_32);
+    	
+    	textField_33 = new JTextField();
+    	textField_33.setColumns(10);
+    	GridBagConstraints gbc_textField_33 = new GridBagConstraints();
+    	gbc_textField_33.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_33.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_33.gridx = 4;
+    	gbc_textField_33.gridy = 1;
+    	defectPanel4.add(textField_33, gbc_textField_33);
+    	
+    	textField_34 = new JTextField();
+    	textField_34.setColumns(10);
+    	GridBagConstraints gbc_textField_34 = new GridBagConstraints();
+    	gbc_textField_34.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_34.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_34.gridx = 5;
+    	gbc_textField_34.gridy = 1;
+    	defectPanel4.add(textField_34, gbc_textField_34);
+    	
+    	textField_35 = new JTextField();
+    	textField_35.setColumns(10);
+    	GridBagConstraints gbc_textField_35 = new GridBagConstraints();
+    	gbc_textField_35.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_35.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_35.gridx = 6;
+    	gbc_textField_35.gridy = 1;
+    	defectPanel4.add(textField_35, gbc_textField_35);
+    	
+    	textField_36 = new JTextField();
+    	textField_36.setColumns(10);
+    	GridBagConstraints gbc_textField_36 = new GridBagConstraints();
+    	gbc_textField_36.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_36.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_36.gridx = 7;
+    	gbc_textField_36.gridy = 1;
+    	defectPanel4.add(textField_36, gbc_textField_36);
+    	
+    	JLabel label_35 = new JLabel("Description");
+    	GridBagConstraints gbc_label_35 = new GridBagConstraints();
+    	gbc_label_35.anchor = GridBagConstraints.EAST;
+    	gbc_label_35.insets = new Insets(0, 0, 0, 5);
+    	gbc_label_35.gridx = 0;
+    	gbc_label_35.gridy = 2;
+    	defectPanel4.add(label_35, gbc_label_35);
+    	
+    	textField_37 = new JTextField();
+    	textField_37.setColumns(10);
+    	GridBagConstraints gbc_textField_37 = new GridBagConstraints();
+    	gbc_textField_37.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_37.gridwidth = 7;
+    	gbc_textField_37.insets = new Insets(0, 0, 0, 5);
+    	gbc_textField_37.gridx = 1;
+    	gbc_textField_37.gridy = 2;
+    	defectPanel4.add(textField_37, gbc_textField_37);
+    	
+    	JPanel defectPanel5 = new JPanel();
+    	GridBagLayout gbl_defectPanel5 = new GridBagLayout();
+    	gbl_defectPanel5.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    	gbl_defectPanel5.rowHeights = new int[]{0, 0, 0, 0};
+    	gbl_defectPanel5.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	gbl_defectPanel5.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+    	defectPanel5.setLayout(gbl_defectPanel5);
+    	
+    	JLabel projectLabel5 = new JLabel("Project");
+    	GridBagConstraints gbc_projectLabel5 = new GridBagConstraints();
+    	gbc_projectLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_projectLabel5.gridx = 0;
+    	gbc_projectLabel5.gridy = 0;
+    	defectPanel5.add(projectLabel5, gbc_projectLabel5);
+    	
+    	JLabel dateLabel5 = new JLabel("Date");
+    	GridBagConstraints gbc_dateLabel5 = new GridBagConstraints();
+    	gbc_dateLabel5.anchor = GridBagConstraints.NORTH;
+    	gbc_dateLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_dateLabel5.gridx = 1;
+    	gbc_dateLabel5.gridy = 0;
+    	defectPanel5.add(dateLabel5, gbc_dateLabel5);
+    	
+    	JLabel numberLabel5 = new JLabel("Number");
+    	GridBagConstraints gbc_numberLabel5 = new GridBagConstraints();
+    	gbc_numberLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_numberLabel5.gridx = 2;
+    	gbc_numberLabel5.gridy = 0;
+    	defectPanel5.add(numberLabel5, gbc_numberLabel5);
+    	
+    	JLabel typeLabel5 = new JLabel("Type");
+    	GridBagConstraints gbc_typeLabel5 = new GridBagConstraints();
+    	gbc_typeLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_typeLabel5.gridx = 3;
+    	gbc_typeLabel5.gridy = 0;
+    	defectPanel5.add(typeLabel5, gbc_typeLabel5);
+    	
+    	JLabel injectLabel5 = new JLabel("Inject");
+    	GridBagConstraints gbc_injectLabel5 = new GridBagConstraints();
+    	gbc_injectLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_injectLabel5.gridx = 4;
+    	gbc_injectLabel5.gridy = 0;
+    	defectPanel5.add(injectLabel5, gbc_injectLabel5);
+    	
+    	JLabel removeLabel5 = new JLabel("Remove");
+    	GridBagConstraints gbc_removeLabel5 = new GridBagConstraints();
+    	gbc_removeLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_removeLabel5.gridx = 5;
+    	gbc_removeLabel5.gridy = 0;
+    	defectPanel5.add(removeLabel5, gbc_removeLabel5);
+    	
+    	JLabel fixTimeLabel5 = new JLabel("Fix Time");
+    	GridBagConstraints gbc_fixTimeLabel5 = new GridBagConstraints();
+    	gbc_fixTimeLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixTimeLabel5.gridx = 6;
+    	gbc_fixTimeLabel5.gridy = 0;
+    	defectPanel5.add(fixTimeLabel5, gbc_fixTimeLabel5);
+    	
+    	JLabel fixRefLabel5 = new JLabel("Fix Ref");
+    	GridBagConstraints gbc_fixRefLabel5 = new GridBagConstraints();
+    	gbc_fixRefLabel5.insets = new Insets(0, 0, 5, 5);
+    	gbc_fixRefLabel5.gridx = 7;
+    	gbc_fixRefLabel5.gridy = 0;
+    	defectPanel5.add(fixRefLabel5, gbc_fixRefLabel5);
+    	
+    	textField_38 = new JTextField();
+    	textField_38.setColumns(10);
+    	GridBagConstraints gbc_textField_38 = new GridBagConstraints();
+    	gbc_textField_38.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_38.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_38.gridx = 0;
+    	gbc_textField_38.gridy = 1;
+    	defectPanel5.add(textField_38, gbc_textField_38);
+    	
+    	textField_39 = new JTextField();
+    	textField_39.setColumns(10);
+    	GridBagConstraints gbc_textField_39 = new GridBagConstraints();
+    	gbc_textField_39.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_39.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_39.gridx = 1;
+    	gbc_textField_39.gridy = 1;
+    	defectPanel5.add(textField_39, gbc_textField_39);
+    	
+    	textField_40 = new JTextField();
+    	textField_40.setColumns(10);
+    	GridBagConstraints gbc_textField_40 = new GridBagConstraints();
+    	gbc_textField_40.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_40.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_40.gridx = 2;
+    	gbc_textField_40.gridy = 1;
+    	defectPanel5.add(textField_40, gbc_textField_40);
+    	
+    	textField_41 = new JTextField();
+    	textField_41.setColumns(10);
+    	GridBagConstraints gbc_textField_41 = new GridBagConstraints();
+    	gbc_textField_41.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_41.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_41.gridx = 3;
+    	gbc_textField_41.gridy = 1;
+    	defectPanel5.add(textField_41, gbc_textField_41);
+    	
+    	textField_42 = new JTextField();
+    	textField_42.setColumns(10);
+    	GridBagConstraints gbc_textField_42 = new GridBagConstraints();
+    	gbc_textField_42.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_42.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_42.gridx = 4;
+    	gbc_textField_42.gridy = 1;
+    	defectPanel5.add(textField_42, gbc_textField_42);
+    	
+    	textField_43 = new JTextField();
+    	textField_43.setColumns(10);
+    	GridBagConstraints gbc_textField_43 = new GridBagConstraints();
+    	gbc_textField_43.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_43.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_43.gridx = 5;
+    	gbc_textField_43.gridy = 1;
+    	defectPanel5.add(textField_43, gbc_textField_43);
+    	
+    	textField_44 = new JTextField();
+    	textField_44.setColumns(10);
+    	GridBagConstraints gbc_textField_44 = new GridBagConstraints();
+    	gbc_textField_44.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_44.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_44.gridx = 6;
+    	gbc_textField_44.gridy = 1;
+    	defectPanel5.add(textField_44, gbc_textField_44);
+    	
+    	textField_45 = new JTextField();
+    	textField_45.setColumns(10);
+    	GridBagConstraints gbc_textField_45 = new GridBagConstraints();
+    	gbc_textField_45.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_45.insets = new Insets(0, 0, 5, 5);
+    	gbc_textField_45.gridx = 7;
+    	gbc_textField_45.gridy = 1;
+    	defectPanel5.add(textField_45, gbc_textField_45);
+    	
+    	JLabel label_44 = new JLabel("Description");
+    	GridBagConstraints gbc_label_44 = new GridBagConstraints();
+    	gbc_label_44.anchor = GridBagConstraints.EAST;
+    	gbc_label_44.insets = new Insets(0, 0, 0, 5);
+    	gbc_label_44.gridx = 0;
+    	gbc_label_44.gridy = 2;
+    	defectPanel5.add(label_44, gbc_label_44);
+    	
+    	textField_46 = new JTextField();
+    	textField_46.setColumns(10);
+    	GridBagConstraints gbc_textField_46 = new GridBagConstraints();
+    	gbc_textField_46.fill = GridBagConstraints.HORIZONTAL;
+    	gbc_textField_46.gridwidth = 7;
+    	gbc_textField_46.insets = new Insets(0, 0, 0, 5);
+    	gbc_textField_46.gridx = 1;
+    	gbc_textField_46.gridy = 2;
+    	defectPanel5.add(textField_46, gbc_textField_46);
+    	GroupLayout groupLayout = new GroupLayout(this);
+    	groupLayout.setHorizontalGroup(
+    		groupLayout.createParallelGroup(Alignment.LEADING)
+    			.addGroup(groupLayout.createSequentialGroup()
+    				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+    					.addGroup(groupLayout.createSequentialGroup()
+    						.addGap(6)
+    						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+    							.addGroup(groupLayout.createSequentialGroup()
+    								.addComponent(nameTitleLabel)
+    								.addPreferredGap(ComponentPlacement.RELATED)
+    								.addComponent(nameTitleField, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+    							.addGroup(groupLayout.createSequentialGroup()
+    								.addComponent(projectTitleLabel)
+    								.addPreferredGap(ComponentPlacement.RELATED)
+    								.addComponent(projectTitleField, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)))
+    						.addPreferredGap(ComponentPlacement.RELATED)
+    						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+    							.addGroup(groupLayout.createSequentialGroup()
+    								.addComponent(programNumLabel)
+    								.addPreferredGap(ComponentPlacement.RELATED)
+    								.addComponent(programNumField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+    							.addGroup(groupLayout.createSequentialGroup()
+    								.addComponent(dateTitleLabel)
+    								.addPreferredGap(ComponentPlacement.RELATED)
+    								.addComponent(dateTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+    					.addComponent(defectPanel1, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
+    					.addComponent(defectPanel2, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
+    					.addComponent(defectPanel3, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
+    					.addComponent(defectPanel4, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
+    					.addComponent(defectPanel5, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE))
+    				.addContainerGap(19, Short.MAX_VALUE))
+    	);
+    	groupLayout.setVerticalGroup(
+    		groupLayout.createParallelGroup(Alignment.LEADING)
+    			.addGroup(groupLayout.createSequentialGroup()
+    				.addContainerGap()
+    				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+    					.addComponent(nameTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+    					.addComponent(dateTitleLabel)
+    					.addComponent(dateTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+    					.addComponent(nameTitleLabel))
+    				.addPreferredGap(ComponentPlacement.RELATED)
+    				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+    					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+    						.addComponent(projectTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+    						.addComponent(projectTitleLabel))
+    					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+    						.addComponent(programNumLabel)
+    						.addComponent(programNumField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+    				.addPreferredGap(ComponentPlacement.RELATED)
+    				.addComponent(defectPanel1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+    				.addPreferredGap(ComponentPlacement.RELATED)
+    				.addComponent(defectPanel2, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+    				.addPreferredGap(ComponentPlacement.RELATED)
+    				.addComponent(defectPanel3, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+    				.addPreferredGap(ComponentPlacement.RELATED)
+    				.addComponent(defectPanel4, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+    				.addPreferredGap(ComponentPlacement.RELATED)
+    				.addComponent(defectPanel5, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+    				.addContainerGap(157, Short.MAX_VALUE))
+    	);
+    	setLayout(groupLayout);
+    	
+        try {
+            jbInit();
+                        
+        }
+        catch (Exception ex) {
+           new ExceptionDialog(ex);
+        }
+    }
+    void jbInit() throws Exception {
+        
+        
+    }
+}
