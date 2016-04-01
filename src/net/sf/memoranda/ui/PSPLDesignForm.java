@@ -1,9 +1,7 @@
 package net.sf.memoranda.ui;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -13,9 +11,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -28,6 +27,7 @@ import javax.swing.event.ListSelectionListener;
 
 import net.sf.memoranda.CurrentProject;
 import net.sf.memoranda.Resource;
+import net.sf.memoranda.ui.ResourcesPanel.PopupListener;
 import net.sf.memoranda.util.AppList;
 import net.sf.memoranda.util.CurrentStorage;
 import net.sf.memoranda.util.Local;
@@ -38,48 +38,20 @@ import net.sf.memoranda.util.Util;
 import java.io.*;
 
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
-public class PSPLearnPanel extends JPanel {
-<<<<<<< HEAD
-	BorderLayout borderLayout1 = new BorderLayout();
-	PSPLProjectSummary projectSummaryPanel = new PSPLProjectSummary();
-	PSPLDesignForm designFormPanel = new PSPLDesignForm();
-	PSPLTimeRecording timeRecordingPanel = new PSPLTimeRecording();
-=======
-	private static final Component PSP0 = null;
-	private static final Component PSP1 = null;
-	private static final Component PSP2 = null;
-	BorderLayout borderLayout1 = new BorderLayout();
-	PSP0 projectSummaryPanel = new PSP0();
-	PSP1 designFormPanel = new PSP1();
-	PSP2 timeRecordingPanel = new PSP2();
->>>>>>> master
-	
-    JTabbedPane tabbedPane = new JTabbedPane();
-
-    public PSPLearnPanel() {
+public class PSPLDesignForm extends JPanel {
+    BorderLayout borderLayout1 = new BorderLayout();
+    
+    public PSPLDesignForm() {
+    	
         try {
             jbInit();
+                        
         }
         catch (Exception ex) {
            new ExceptionDialog(ex);
         }
     }
-    
     void jbInit() throws Exception {
-    	
         this.setLayout(borderLayout1);
-        
-<<<<<<< HEAD
-        tabbedPane.add("PSP0", projectSummaryPanel);
-        tabbedPane.add("PSP1", designFormPanel);
-        tabbedPane.add("PSP2", timeRecordingPanel);
-=======
-        tabbedPane.add("PSP0", PSP0);
-        tabbedPane.add("PSP1", PSP1);
-        tabbedPane.add("PSP2", PSP2);
->>>>>>> master
-        
-        add(tabbedPane);
     }
-       	
- }
+}
