@@ -126,6 +126,7 @@ public class PreferencesDialog extends JDialog {
 	BorderLayout borderLayout2 = new BorderLayout();
 	
 	JPanel editorConfigPanel = new JPanel(new BorderLayout());
+	JPanel mailingPanel = new JPanel(new BorderLayout());
 	JPanel econfPanel = new JPanel(new GridLayout(5, 2));
 	Vector fontnames = getFontNames();
 	JComboBox normalFontCB = new JComboBox(fontnames);
@@ -481,11 +482,25 @@ public class PreferencesDialog extends JDialog {
 		((GridLayout)econfPanel.getLayout()).setHgap(10);
 		((GridLayout)econfPanel.getLayout()).setVgap(5);
 		editorConfigPanel.add(econfPanel, BorderLayout.NORTH);
+		
+		// Build MailingPanel
+		JLabel Email = new JLabel("Enter email address to send updates to:");
+		Email.setHorizontalAlignment(SwingConstants.LEFT);
+		JTextField emailTextField = new JTextField(30);
+		emailTextField.setHorizontalAlignment(SwingConstants.RIGHT);
+		JButton sendUpdate = new JButton("Send Update");
+		sendUpdate.setHorizontalAlignment(SwingConstants.CENTER);
+		mailingPanel.setLayout(new FlowLayout());
+		mailingPanel.add(Email);
+		mailingPanel.add(emailTextField);
+		mailingPanel.add(sendUpdate);		
+		
 		// Build TabbedPanel
 		tabbedPanel.add(GeneralPanel, Local.getString("General"));
 		tabbedPanel.add(resourcePanel, Local.getString("Resource types"));
 		tabbedPanel.add(soundPanel, Local.getString("Sound"));
 		tabbedPanel.add(editorConfigPanel, Local.getString("Editor"));
+		tabbedPanel.add(mailingPanel, Local.getString("Mailing"));
 
 		// Build TopPanel
 		topPanel.add(tabbedPanel, BorderLayout.CENTER);
