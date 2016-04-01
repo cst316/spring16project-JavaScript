@@ -9,11 +9,10 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,9 +25,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.text.StyledDocument;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
 
 import net.sf.memoranda.CurrentProject;
 import net.sf.memoranda.Resource;
@@ -40,41 +36,45 @@ import net.sf.memoranda.util.MimeTypesList;
 import net.sf.memoranda.util.Util;
 
 import java.io.*;
-import java.awt.Font;
 
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPLearnPanel extends JPanel {
+<<<<<<< HEAD
 
     //BorderLayout borderLayout1 = new BorderLayout();
 	
 	PSP1Learn psp1 = new PSP1Learn();
 
+=======
+>>>>>>> parent of 1f1a395... Merge pull request #7 from cst316/US-69
 	private static final Component PSP0 = null;
 	private static final Component PSP1 = null;
 	//private static final Component PSP2 = null;
 	BorderLayout borderLayout1 = new BorderLayout();
 	PSP0 projectSummaryPanel = new PSP0();
 	PSP1 designFormPanel = new PSP1();
+<<<<<<< HEAD
 	PSP2Example timeRecordingPanel = new PSP2Example();
 
+=======
+	PSP2 timeRecordingPanel = new PSP2();
+>>>>>>> parent of 1f1a395... Merge pull request #7 from cst316/US-69
 	
     JTabbedPane tabbedPane = new JTabbedPane();
 
     public PSPLearnPanel() {
         try {
             jbInit();
-        }catch (FileNotFoundException e){
-        	System.out.println("File not Found!"); 
         }
         catch (Exception ex) {
            new ExceptionDialog(ex);
         }
-        
     }
     
     void jbInit() throws Exception {
     	
         this.setLayout(borderLayout1);
+<<<<<<< HEAD
        
        
         add(tabbedPane);
@@ -116,12 +116,18 @@ public class PSPLearnPanel extends JPanel {
         workCited.setVerticalAlignment(SwingConstants.BOTTOM);
         panel.add(workCited);
 
+=======
+        
+>>>>>>> parent of 1f1a395... Merge pull request #7 from cst316/US-69
         tabbedPane.add("PSP0", PSP0);
         tabbedPane.add("PSP1", PSP1);
         tabbedPane.add("PSP2", timeRecordingPanel);
         
         add(tabbedPane);
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 1f1a395... Merge pull request #7 from cst316/US-69
     }
        	
  }
