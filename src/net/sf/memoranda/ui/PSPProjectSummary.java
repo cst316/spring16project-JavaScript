@@ -1,14 +1,20 @@
 package net.sf.memoranda.ui;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.ScrollPane;
+
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class PSPProjectSummary extends JPanel {    
-    //Create all labels for PSP Project Summary
+	//Create all labels for PSP Project Summary
     JLabel psp0Label = new JLabel("PSP0 Project Summary");
     JLabel timeInPhaseLabel = new JLabel("Time in Phase\n(minutes)");
     JLabel actualTimeLabel = new JLabel("Actual Time\n(minutes)");
@@ -85,6 +91,7 @@ public class PSPProjectSummary extends JPanel {
         }
     }
     void jbInit() throws Exception {
+    	this.setPreferredSize(new Dimension(1500, 700));
         setupUI();
     }
     
