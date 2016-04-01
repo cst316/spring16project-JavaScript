@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+!SESSION 2016-03-28 23:43:22.500 -----------------------------------------------
+=======
 !SESSION 2016-02-15 13:37:48.015 -----------------------------------------------
 eclipse.buildId=4.5.1.M20150904-0015
 java.version=1.8.0_65
@@ -10196,6 +10199,7 @@ java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
 !SESSION 2016-02-18 22:23:15.287 -----------------------------------------------
+>>>>>>> master
 eclipse.buildId=4.5.1.M20150904-0015
 java.version=1.8.0_65
 java.vendor=Oracle Corporation
@@ -10203,6 +10207,23 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
 Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/vvarela15/.eclipse_keyring -showlocation
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/vvarela15/.eclipse_keyring -showlocation
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.core.net 1 0 2016-03-28 23:43:24.637
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.jobs 2 2 2016-03-28 23:43:43.708
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.ui.internal.Workbench$56
+!SESSION 2016-03-28 23:52:54.319 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.net 1 0 2016-03-28 23:53:29.946
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+=======
 !ENTRY org.eclipse.core.net 1 0 2016-02-18 22:23:16.348
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
@@ -10494,3 +10515,4 @@ Contains: The project description file (.project) for 'Memoranda' is missing.  T
 
 !ENTRY org.eclipse.egit.ui 4 0 2016-03-20 17:22:38.051
 !MESSAGE Errors occurred while refreshing resources with the local file system.
+>>>>>>> master
