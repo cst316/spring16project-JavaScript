@@ -3,6 +3,7 @@ package net.sf.memoranda.ui;
 import java.awt.BorderLayout;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -43,9 +44,19 @@ import java.awt.Font;
 
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPLearnPanel extends JPanel {
+<<<<<<< HEAD
     BorderLayout borderLayout1 = new BorderLayout();
 	
 	PSP1Learn psp1 = new PSP1Learn();
+=======
+	private static final Component PSP0 = null;
+	private static final Component PSP1 = null;
+	private static final Component PSP2 = null;
+	BorderLayout borderLayout1 = new BorderLayout();
+	PSP0 projectSummaryPanel = new PSP0();
+	PSP1 designFormPanel = new PSP1();
+	PSP2 timeRecordingPanel = new PSP2();
+>>>>>>> master
 	
     JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -77,6 +88,7 @@ public class PSPLearnPanel extends JPanel {
         PSP1LearnExplanation.setForeground(Color.BLACK);
         PSP1LearnExplanation.setFont(new Font("Arial", Font.PLAIN, 20));
         
+<<<<<<< HEAD
         PSP1LearnExplanation.setText("Requirements: Engineers start planning by defining the work that needs to be done "
         		+ "\nin as much detail as possible. If all they have is a one-sentence requirements statement, then that"
         		+ "\nstatement must be the basis for the plan. Of course, the accuracy of the estimate and plan is"
@@ -104,6 +116,13 @@ public class PSPLearnPanel extends JPanel {
         workCited.setFont(new Font("Arial", Font.ITALIC, 10));
         workCited.setVerticalAlignment(SwingConstants.BOTTOM);
         panel.add(workCited);
+=======
+        tabbedPane.add("PSP0", PSP0);
+        tabbedPane.add("PSP1", PSP1);
+        tabbedPane.add("PSP2", PSP2);
+        
+        add(tabbedPane);
+>>>>>>> master
     }
        	
  }
