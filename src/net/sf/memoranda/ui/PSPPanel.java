@@ -50,7 +50,7 @@ public class PSPPanel extends JPanel {
         try {
         	scroll.setPreferredSize(new Dimension(500,500));
         	scroll.setViewportView(projectSummaryPanel);
-            
+             
             jbInit();
         }
         catch (Exception ex) {

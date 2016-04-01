@@ -91,7 +91,7 @@ public class PSPProjectSummary extends JPanel {
         }
     }
     void jbInit() throws Exception {
-    	this.setPreferredSize(new Dimension(1500, 1000));
+    	this.setPreferredSize(new Dimension(1500, 700));
         setupUI();
     }
     
