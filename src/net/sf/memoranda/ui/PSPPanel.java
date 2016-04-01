@@ -43,12 +43,14 @@ public class PSPPanel extends JPanel {
 	PSPDesignForm designFormPanel = new PSPDesignForm();
 	PSPTimeRecording timeRecordingPanel = new PSPTimeRecording();
 	PSPDefectRecording defectRecordingPanel = new PSPDefectRecording();
-	
-	
+	JScrollPane scroll = new JScrollPane();
     JTabbedPane tabbedPane = new JTabbedPane();
 
     public PSPPanel() {
         try {
+        	scroll.setPreferredSize(new Dimension(500,500));
+        	scroll.setViewportView(projectSummaryPanel);
+            
             jbInit();
         }
         catch (Exception ex) {
@@ -60,7 +62,7 @@ public class PSPPanel extends JPanel {
     	
         this.setLayout(borderLayout1);
         
-        tabbedPane.add("Project Summary", projectSummaryPanel);
+        tabbedPane.add("Project Summary", scroll);
         tabbedPane.add("Design Form", designFormPanel);
         tabbedPane.add("Time Recording", timeRecordingPanel);
         tabbedPane.add("Defect Recording", defectRecordingPanel);
