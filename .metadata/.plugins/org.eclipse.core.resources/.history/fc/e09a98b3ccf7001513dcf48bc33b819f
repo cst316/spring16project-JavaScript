@@ -46,6 +46,8 @@ import java.awt.Font;
 public class PSPLearnPanel extends JPanel {
 
     //BorderLayout borderLayout1 = new BorderLayout();
+	
+	PSP1Learn psp1 = new PSP1Learn();
 
 	private static final Component PSP0 = null;
 	private static final Component PSP1 = null;
