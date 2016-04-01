@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<commands>
-	<moveEntry
-		id="org.eclipse.wb.swing.layouts net.miginfocom.swing.MigLayout"
-		category="org.eclipse.wb.swing.layouts"/>
-</commands>
