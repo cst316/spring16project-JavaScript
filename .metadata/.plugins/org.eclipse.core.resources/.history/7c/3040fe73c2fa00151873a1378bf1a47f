@@ -1575,8 +1575,6 @@ public class PSPDefectRecording extends JPanel {
 			}
 		});
     	
-    	
-    	project.setText(CurrentProject.get().getTitle());
     	GroupLayout groupLayout = new GroupLayout(this);
     	groupLayout.setHorizontalGroup(
     		groupLayout.createParallelGroup(Alignment.LEADING)
