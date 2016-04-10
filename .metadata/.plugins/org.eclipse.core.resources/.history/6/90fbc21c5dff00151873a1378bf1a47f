@@ -54,9 +54,12 @@ public class PSP1 extends JPanel {
             jbInit();
                         
         }
+<<<<<<< HEAD
+=======
         catch (FileNotFoundException e){
         	System.out.println("FileNotFound!");
         }
+>>>>>>> master
         catch (Exception ex) {
            new ExceptionDialog(ex);
         }
