@@ -39,6 +39,15 @@ import java.io.*;
 
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPLearnPanel extends JPanel {
+<<<<<<< HEAD
+=======
+
+    //BorderLayout borderLayout1 = new BorderLayout();
+
+	private static final Component PSP0 = null;
+	private static final Component PSP1 = null;
+	//private static final Component PSP2 = null;
+>>>>>>> master
 	BorderLayout borderLayout1 = new BorderLayout();
 	
 	PSP0 projectSummaryPanel = new PSP0();

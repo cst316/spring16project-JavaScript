@@ -27,12 +27,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.sf.memoranda.CurrentProject;
-import net.sf.memoranda.NoteList;
-import net.sf.memoranda.Project;
-import net.sf.memoranda.ProjectListener;
 import net.sf.memoranda.Resource;
-import net.sf.memoranda.ResourcesList;
-import net.sf.memoranda.TaskList;
 import net.sf.memoranda.ui.ResourcesPanel.PopupListener;
 import net.sf.memoranda.util.AppList;
 import net.sf.memoranda.util.CurrentStorage;
@@ -53,6 +48,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPDefectRecording extends JPanel {
 	private JTextField nameTitleField;
+	private JTextField projectTitleField;
 	private JTextField dateTitleField;
 	private JTextField programNumField;
 	private JTextField projectField1;
@@ -136,7 +132,6 @@ public class PSPDefectRecording extends JPanel {
 	private JTextField fixTimeField9;
 	private JTextField fixRefField9;
 	private JTextField descriptionField9;
-	JLabel project = new JLabel();
     
     public PSPDefectRecording() {
     	
@@ -157,6 +152,8 @@ public class PSPDefectRecording extends JPanel {
     	
     	JLabel projectTitleLabel = new JLabel("Project:");
     	
+    	projectTitleField = new JTextField();
+    	projectTitleField.setColumns(10);
     	
     	JLabel dateTitleLabel = new JLabel("Date:");
     	
@@ -1562,21 +1559,6 @@ public class PSPDefectRecording extends JPanel {
     	gbc_descriptionField9.gridx = 1;
     	gbc_descriptionField9.gridy = 2;
     	defectPanel9.add(descriptionField9, gbc_descriptionField9);
-    	
-    	CurrentProject.addProjectListener(new ProjectListener() {
-			public void projectChange(
-				Project p,
-				NoteList nl,
-				TaskList tl,
-				ResourcesList rl) {
-			}
-			public void projectWasChanged() {
-				project.setText(CurrentProject.get().getTitle());
-			}
-		});
-    	
-    	
-    	project.setText(CurrentProject.get().getTitle());
     	GroupLayout groupLayout = new GroupLayout(this);
     	groupLayout.setHorizontalGroup(
     		groupLayout.createParallelGroup(Alignment.LEADING)
@@ -1591,9 +1573,9 @@ public class PSPDefectRecording extends JPanel {
     								.addComponent(nameTitleField, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
     							.addGroup(groupLayout.createSequentialGroup()
     								.addComponent(projectTitleLabel)
-    								.addGap(43)
-    								.addComponent(project)))
-    						.addGap(110)
+    								.addPreferredGap(ComponentPlacement.RELATED)
+    								.addComponent(projectTitleField, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)))
+    						.addPreferredGap(ComponentPlacement.RELATED)
     						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
     							.addGroup(groupLayout.createSequentialGroup()
     								.addComponent(programNumLabel)
@@ -1626,8 +1608,8 @@ public class PSPDefectRecording extends JPanel {
     				.addPreferredGap(ComponentPlacement.RELATED)
     				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
     					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-    						.addComponent(projectTitleLabel)
-    						.addComponent(project))
+    						.addComponent(projectTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+    						.addComponent(projectTitleLabel))
     					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
     						.addComponent(programNumLabel)
     						.addComponent(programNumField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
@@ -1653,5 +1635,6 @@ public class PSPDefectRecording extends JPanel {
     	);
     	setLayout(groupLayout);
     
+        
     }
 }
