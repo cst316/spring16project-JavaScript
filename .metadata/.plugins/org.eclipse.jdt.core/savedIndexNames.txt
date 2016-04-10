@@ -1,7 +1,18 @@
 INDEX VERSION 1.127+/Users/vvarela15/git/spring16project-JavaScript/.metadata/.plugins/org.eclipse.jdt.core
-3925862215.index
+<<<<<<< HEAD
+=======
+=======
+871256315.index
 1702994446.index
+2037371189.index
+>>>>>>> master
+<<<<<<< HEAD
+476328496.index
+3785765040.index
+>>>>>>> master
+3925862215.index
 2946229432.index
+<<<<<<< HEAD
 707026026.index
 949527267.index
 2519666294.index
@@ -25,3 +36,17 @@ INDEX VERSION 1.127+/Users/vvarela15/git/spring16project-JavaScript/.metadata/.p
 55182101.index
 476328496.index
 3785765040.index
+=======
+3531720035.index
+2467027372.index
+2519666294.index
+2078655388.index
+55182101.index
+2154879971.index
+2626051594.index
+4028256843.index
+2150420608.index
+25570424.index
+792522470.index
+3619679965.index
+>>>>>>> master
