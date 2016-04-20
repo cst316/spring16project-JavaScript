@@ -1,0 +1,26 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+
+import org.junit.Test;
+
+public class WorkPanelTest {
+
+	public void test() throws AWTException {
+		Robot bot = new Robot();
+		
+		bot.mousePress(InputEvent.BUTTON1_MASK);
+		
+		try{
+			Thread.sleep(250);
+		}
+		catch (InterruptedException e){
+		}
+		bot.mouseRelease(InputEvent.BUTTON1_MASK);
+	}
+
+}
