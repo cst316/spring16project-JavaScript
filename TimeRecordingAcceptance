@@ -1,0 +1,23 @@
+Time Recording Acceptance Test
+
+This is an acceptance test document for the Time Recording UI.
+
+Included are the initial requirements and the results on whether or not
+the requirements were fulfilled.
+
+Requirements.
+
+Let the user enter data about an instance of work.
+An instance includes:
+  Date
+  Start Time
+  End Time
+  Phase
+  Additional Comments
+  
+Allow multiple instances to be held. Currently ten.
+
+Tie the log to the project.
+
+So far, all requirements but one have been met. 
+Back-end work still needs to be done in order to tie the log with a project.
