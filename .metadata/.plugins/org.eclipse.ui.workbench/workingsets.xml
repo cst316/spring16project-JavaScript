@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
+<<<<<<< HEAD
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1461135077014_0" label="Window Working Set" name="Aggregate for window 1461135077014"/>
+=======
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1459484109950_0" label="Window Working Set" name="Aggregate for window 1459484109949"/>
+>>>>>>> parent of 9ccbadf... Merge remote-tracking branch 'origin/master'
 </workingSetManager>

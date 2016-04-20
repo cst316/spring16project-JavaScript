@@ -44,7 +44,7 @@ public class CalendarDateTest {
 	@Test
 	public void beforeTest() {
 		assertTrue(cd1.before(cd2));
-		assertFalse(cd2.before(cd1)); //Pass with assertFalse
+		assertTrue(cd2.before(cd1)); //Pass with assertFalse
 	}
 	
 	@Test
