@@ -36,12 +36,12 @@ public class WorkPanel extends JPanel {
 	public ResourcesPanel filesPanel = new ResourcesPanel();
 	public PSPPanel pspPanel = new PSPPanel();
 	public PSPLearnPanel pspLearnPanel = new PSPLearnPanel();
-	public JButton agendaB = new JButton();
-	public JButton tasksB = new JButton();
-	public JButton eventsB = new JButton();
-	public JButton filesB = new JButton();
-	public JButton pspB = new JButton();
-	public JButton pspBLearn = new JButton();
+	public static JButton agendaB = new JButton();
+	public static JButton tasksB = new JButton();
+	public static JButton eventsB = new JButton();
+	public static JButton filesB = new JButton();
+	public static JButton pspB = new JButton();
+	public static JButton pspBLearn = new JButton();
 	JButton currentB = null;
 	Border border1;
 
@@ -242,11 +242,13 @@ public class WorkPanel extends JPanel {
 		pspBLearn.setText(Local.getString("PSP Learn"));
 		pspBLearn.setVerticalAlignment(SwingConstants.TOP);
 		pspBLearn.setVerticalTextPosition(SwingConstants.BOTTOM);
+		pspBLearn.setName("pspButton");
 		pspBLearn.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pspBLearn_actionPerformed(e);
 			}
 		});
+		
 		pspBLearn.setIcon(
 			new ImageIcon(
 				net.sf.memoranda.ui.AppFrame.class.getResource(
@@ -277,6 +279,7 @@ public class WorkPanel extends JPanel {
 		pspPanel.setBorder(null);
 		pspLearnPanel.setBorder(null);
 	}
+
 
 	public void selectPanel(String pan) {
 		if (pan != null) {
