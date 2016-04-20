@@ -1,0 +1,55 @@
+PSP Documentation
+Version: 4/16/2016
+
+PSP stands for the Personal Software Process. It is a structured process to aid the 
+software development process. PSP was created by Watts Humphrey and is trademarked 
+by Carnegie Mellon University.
+
+PSP allows developers to estimate and plan their work, meet commitments, and 
+identify unreasonable deadlines. It also helps developers understand their 
+performance and improve capability.
+
+The process provides a basis for developing and using a personal process, discipline
+to improve the developer's personal process, and data to improve productivity
+and quality.
+
+Included in the PSP are defined steps, standards and forms. It provides measurement
+to manage personal work. It is a detailed procedure. The process is broken into 
+three steps. Before the steps begin, the problem is described and the time and defect
+logs are started. These logs are updated throughout the project.
+
+The first step, PSP0, has three different phases. In the first phase, the planning
+is done. In the planning phase, the requirements are stated, total development time
+is estimated, and a plan summary form is filled out.
+
+PSP0 has four forms involved. The first form is the project plan summary. This form 
+summarizes the planned and actual time and defects in each phase. The second and third 
+forms are the time recording log and the defect recording log. The last form is the 
+defect type standard form. It is used to define the standard defect types so that 
+each defect found can be categorized.
+
+In the second step of PSP0, the actual development is done. The program is first designed
+and then implemented. The program is then compiled and all defects, if any, are logged and
+resolved. The program is then tested, and once again the defects and logged and fixed.
+Finally, the time recording log is completed.
+
+The last step of PSP0 is the postmortem. In the postmortem, the plan summary form is filled
+out with the estimated time and the actual time taken, as well as the defects and size.
+
+In PSP1, the data collected from PSP0 is used as a baseline to estimate how long a new
+project will take to complete. Each completed project will add to the baseline data
+to be used in future estimating. 
+
+The focus of PSP2 is on design and quality management. It establishes two new phases 
+which are the design review and the code review. By review the process, developers
+can improve future processes by understanding how long tasks while take and how many
+defects they can expect to introduce and remove.
+
+In the Memoranda project, we created three tools to help aid the user with PSP. We made
+a Project Plan Summary form, a Time Recording log, and a Defect Recording log. Along with
+these tools, we also created examples that would help teach the user how they are supposed
+to be used. These are included in PSPLearn.
+
+A future feature would be a tool that would help the user learn the process by actually
+doing it. By having the user actively involved in the process instead of just reading 
+about it, they would be able to grasp a better understanding of the process.
