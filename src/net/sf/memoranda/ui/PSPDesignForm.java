@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyListener;
@@ -45,7 +46,18 @@ public class PSPDesignForm extends JPanel {
     	
         try {
             jbInit();
-                        
+            
+            JPanel panel = new JPanel();
+    		add(panel);
+    		
+    		JButton btnWhiteboard = new JButton("WhiteBoard");
+    		panel.add(btnWhiteboard);
+    		btnWhiteboard.addActionListener(new ActionListener() {
+    			public void actionPerformed(ActionEvent e) {
+    				new PSPDesignPan().show();
+    			}
+    		});
+           
         }
         catch (Exception ex) {
            new ExceptionDialog(ex);
