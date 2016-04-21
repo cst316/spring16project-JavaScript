@@ -50,11 +50,11 @@ import net.sf.memoranda.util.*;
 /*$Id: ProjectsPanel.java,v 1.14 2005/01/04 09:59:22 pbielen Exp $*/
 public class ProjectsPanel extends JPanel implements ExpandablePanel {
 	BorderLayout borderLayout1 = new BorderLayout();
-	JToolBar topBar = new JToolBar();
-	JPanel toolbarPanel = new JPanel();
+	public static JToolBar topBar = new JToolBar();
+	public static JPanel toolbarPanel = new JPanel();
 	BorderLayout borderLayout2 = new BorderLayout();
-	JPanel buttonsPanel = new JPanel();
-	JButton toggleButton = new JButton();
+	public static JPanel buttonsPanel = new JPanel();
+	public static JButton toggleButton = new JButton();
 	FlowLayout flowLayout1 = new FlowLayout();
 	Vector expListeners = new Vector();
 	boolean expanded = false;

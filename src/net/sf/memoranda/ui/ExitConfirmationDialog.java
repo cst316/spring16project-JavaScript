@@ -67,7 +67,7 @@ public class ExitConfirmationDialog extends JDialog implements WindowListener {
 		confirm.setText("<HTML>"+Local.getString("This action will cause Memoranda to exit") + 
 										"<p>" + Local.getString("Do you want to continue?"));
 										
-		donotaskCB.setText(Local.getString("do not ask again"));
+		donotaskCB.setText(Local.getString("Do not ask again"));
 		donotaskCB.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));

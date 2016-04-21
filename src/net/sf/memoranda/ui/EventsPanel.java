@@ -38,12 +38,12 @@ import net.sf.memoranda.util.Util;
 /*$Id: EventsPanel.java,v 1.25 2005/02/19 10:06:25 rawsushi Exp $*/
 public class EventsPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
-    JButton historyBackB = new JButton();
+    public static JButton historyBackB = new JButton();
     JToolBar eventsToolBar = new JToolBar();
-    JButton historyForwardB = new JButton();
-    JButton newEventB = new JButton();
-    JButton editEventB = new JButton();
-    JButton removeEventB = new JButton();
+    public static JButton historyForwardB = new JButton();
+    public static JButton newEventB = new JButton();
+    public static JButton editEventB = new JButton();
+    public static JButton removeEventB = new JButton();
     JScrollPane scrollPane = new JScrollPane();
     EventsTable eventsTable = new EventsTable();
     JPopupMenu eventPPMenu = new JPopupMenu();

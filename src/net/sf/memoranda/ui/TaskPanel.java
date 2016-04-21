@@ -43,14 +43,14 @@ import net.sf.memoranda.util.Util;
 /*$Id: TaskPanel.java,v 1.27 2007/01/17 20:49:12 killerjoe Exp $*/
 public class TaskPanel extends JPanel {
     BorderLayout borderLayout1 = new BorderLayout();
-    JButton historyBackB = new JButton();
+    public static JButton historyBackB = new JButton();
     JToolBar tasksToolBar = new JToolBar();
-    JButton historyForwardB = new JButton();
-    JButton newTaskB = new JButton();
-    JButton subTaskB = new JButton();
-    JButton editTaskB = new JButton();
-    JButton removeTaskB = new JButton();
-    JButton completeTaskB = new JButton();
+    public static JButton historyForwardB = new JButton();
+    public static JButton newTaskB = new JButton();
+    public static JButton subTaskB = new JButton();
+    public static JButton editTaskB = new JButton();
+    public static JButton removeTaskB = new JButton();
+    public static JButton completeTaskB = new JButton();
     
 	JCheckBoxMenuItem ppShowActiveOnlyChB = new JCheckBoxMenuItem();
 		
