@@ -10,9 +10,12 @@ import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.io.FileOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -57,12 +60,14 @@ public class ProjectDialog extends JDialog {
     JPanel bottomPanel = new JPanel();
     JButton okButton = new JButton();
     JButton cancelButton = new JButton();
-    
+    FileOutputStream is;
+   
     public ProjectDialog(Frame frame, String title) {
         super(frame, title, true);
         try {
             jbInit();
             pack();
+            
         }
         catch(Exception ex) {
             new ExceptionDialog(ex);
@@ -221,8 +226,19 @@ public class ProjectDialog extends JDialog {
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 okButton_actionPerformed(e);
+                try{
+                	File projectFile = new File("ProjectFiles/" + prTitleField.getText() + ".txt");
+                	is = new FileOutputStream(projectFile);
+                	
+                }catch(Exception ex){
+                	System.err.println("File Error");
+                	System.out.println(ex);
+                } 
             }
-        });
+        });      
+        
+        
+        
         this.getRootPane().setDefaultButton(okButton);
         cancelButton.setMaximumSize(new Dimension(100, 25));
         cancelButton.setMinimumSize(new Dimension(100, 25));

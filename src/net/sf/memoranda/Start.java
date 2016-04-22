@@ -8,6 +8,8 @@
  */
 package net.sf.memoranda;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -19,6 +21,7 @@ import net.sf.memoranda.util.Configuration;
  */
 /*$Id: Start.java,v 1.7 2004/11/22 10:02:37 alexeya Exp $*/
 public class Start {
+	
     
     static App app = null;
     
@@ -44,6 +47,9 @@ public class Start {
     }
     
     public static void main(String[] args) {
+    	File fileDir = new File("ProjectFiles");
+    	FileOutputStream is;
+    	
         if (checkIfAlreadyStartet) {
             try {
                 // Try to open a socket. If socket opened successfully (app is already started), take no action and exit.
@@ -64,6 +70,17 @@ public class Start {
         }
         else
             app = new App(false);
+       try{ 
+    	   if(!fileDir.exists() && !fileDir.isDirectory()){
+       			fileDir.mkdir();
+       			File defaultProj = new File(fileDir + "/" + "DefaultProject.txt");
+       			is = new FileOutputStream(defaultProj);
+    	   }
+       		else{
+       		}
+       }catch(Exception exc){
+    	   System.out.println(exc);
+       }
     }
 }
 
