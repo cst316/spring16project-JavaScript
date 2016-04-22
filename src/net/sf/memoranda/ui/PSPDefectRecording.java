@@ -6,12 +6,13 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.io.File;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -27,7 +28,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.sf.memoranda.CurrentProject;
+import net.sf.memoranda.NoteList;
+import net.sf.memoranda.Project;
+import net.sf.memoranda.ProjectListener;
 import net.sf.memoranda.Resource;
+import net.sf.memoranda.ResourcesList;
+import net.sf.memoranda.TaskList;
 import net.sf.memoranda.ui.ResourcesPanel.PopupListener;
 import net.sf.memoranda.util.AppList;
 import net.sf.memoranda.util.CurrentStorage;
@@ -37,13 +43,17 @@ import net.sf.memoranda.util.MimeTypesList;
 import net.sf.memoranda.util.Util;
 
 import java.io.*;
+import java.util.Scanner;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Font;
 
 /*$Id: ResourcesPanel.java,v 1.13 2007/03/20 08:22:41 alexeya Exp $*/
 public class PSPDefectRecording extends JPanel {
@@ -132,6 +142,14 @@ public class PSPDefectRecording extends JPanel {
 	private JTextField fixTimeField9;
 	private JTextField fixRefField9;
 	private JTextField descriptionField9;
+	
+	String fileName;
+	FileWriter fw;
+	BufferedWriter bw;
+	PrintWriter out;
+	FileReader fReader;
+	int counter = 0;
+	String line;
     
     public PSPDefectRecording() {
     	
@@ -153,9 +171,494 @@ public class PSPDefectRecording extends JPanel {
     	JLabel projectTitleLabel = new JLabel("Project:");
     	
     	projectTitleField = new JTextField();
+    	projectTitleField.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+    	projectTitleField.setEditable(false);
     	projectTitleField.setColumns(10);
     	
-    	JLabel dateTitleLabel = new JLabel("Date:");
+    	projectTitleField.setText(CurrentProject.get().getTitle());
+    	
+    	CurrentProject.addProjectListener(new ProjectListener() {
+			public void projectChange(
+				Project p,
+				NoteList nl,
+				TaskList tl,
+				ResourcesList rl) {
+			}
+			public void projectWasChanged() {
+				projectTitleField.setText(CurrentProject.get().getTitle());
+				fileName = "ProjectFiles/" + CurrentProject.get().getTitle() + ".txt";
+				try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+				
+				try{
+		    		fReader = new FileReader(fileName);
+		    		BufferedReader bReader = new BufferedReader(fReader);
+		    	
+		    		while((line = bReader.readLine()) != null){
+		    			counter++;
+		    			if(counter == 1){
+		    				nameTitleField.setText("" + bReader.read());
+		    				System.out.println("HHHHHEEEERRRRE " + bReader.readLine());
+		    			}
+		    		}
+		    		}catch(Exception e){
+		    		e.printStackTrace();
+		    		}finally{
+		    		if(fReader != null)
+						try {
+							fReader.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+		    		}
+				
+				nameTitleField.setText("");
+				dateTitleField.setText("");
+				programNumField.setText("");
+				projectField1.setText("");
+				dateField1.setText("");
+				numberField1.setText("");
+				typeField1.setText("");
+				injectField1.setText("");
+				removeField1.setText("");
+				fixTimeField1.setText("");
+				fixRefField1.setText("");
+				descriptionField1.setText("");
+				projectField2.setText("");
+				dateField2.setText("");
+				numberField2.setText("");
+				typeField2.setText("");
+				injectField2.setText("");
+				removeField2.setText("");
+				fixTimeField2.setText("");
+				fixRefField2.setText("");
+				descriptionField2.setText("");
+				projectField3.setText("");
+				dateField3.setText("");
+				numberField3.setText("");
+				typeField3.setText("");
+				injectField3.setText("");
+				removeField3.setText("");
+				fixTimeField3.setText("");
+				fixRefField3.setText("");
+				descriptionField3.setText("");
+				projectField4.setText("");
+				dateField4.setText("");
+				numberField4.setText("");
+				typeField4.setText("");
+				injectField4.setText("");
+				removeField4.setText("");
+				fixTimeField4.setText("");
+				fixRefField4.setText("");
+				descriptionField4.setText("");
+				projectField5.setText("");
+				dateField5.setText("");
+				numberField5.setText("");
+				typeField5.setText("");
+				injectField5.setText("");
+				removeField5.setText("");
+				fixTimeField5.setText("");
+				fixRefField5.setText("");
+				descriptionField5.setText("");
+				projectField6.setText("");
+				dateField6.setText("");
+				numberField6.setText("");
+				typeField6.setText("");
+				injectField6.setText("");
+				removeField6.setText("");
+				fixTimeField6.setText("");
+				fixRefField6.setText("");
+				descriptionField6.setText("");
+				projectField7.setText("");
+				dateField7.setText("");
+				numberField7.setText("");
+				typeField7.setText("");
+				injectField7.setText("");
+				removeField7.setText("");
+				fixTimeField7.setText("");
+				fixRefField7.setText("");
+				descriptionField7.setText("");
+				projectField8.setText("");
+				dateField8.setText("");
+				numberField8.setText("");
+				typeField8.setText("");
+				injectField8.setText("");
+				removeField8.setText("");
+				fixTimeField8.setText("");
+				fixRefField8.setText("");
+				descriptionField8.setText("");
+				projectField9.setText("");
+				dateField9.setText("");
+				numberField9.setText("");
+				typeField9.setText("");
+				injectField9.setText("");
+				removeField9.setText("");
+				fixTimeField9.setText("");
+				fixRefField9.setText("");
+				descriptionField9.setText("");
+				
+				try{
+		    		fReader = new FileReader(fileName);
+		    		BufferedReader bReader = new BufferedReader(fReader);
+		    		int counter = 0;
+		    		
+		    		File file = new File(fileName);
+		    		@SuppressWarnings("resource")
+					Scanner scanner = new Scanner(file);
+		    		
+		    		while((line = bReader.readLine()) != null){
+		    			counter++;
+		    			if(counter == 1){
+		    				nameTitleField.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 2){
+		    				
+		    				dateTitleField.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 3){
+		    				
+		    				programNumField.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 4){
+		    				
+		    				projectField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 5){
+		    				
+		    				dateField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 6){
+		    				
+		    				numberField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 7){
+		    				
+		    				typeField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 8){
+		    				
+		    				injectField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 9){
+		    				
+		    				removeField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 10){
+		    				
+		    				fixTimeField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 11){
+		    				
+		    				fixRefField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 12){
+		    				
+		    				descriptionField1.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 13){
+		    				
+		    				projectField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 14){
+		    				
+		    				dateField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 15){
+		    				
+		    				numberField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 16){
+		    				
+		    				typeField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 17){
+		    				
+		    				injectField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 18){
+		    				
+		    				removeField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 19){
+		    				
+		    				fixTimeField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 20){
+		    				
+		    				fixRefField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 21){
+		    				
+		    				descriptionField2.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 222){
+		    				
+		    				projectField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 23){
+		    				
+		    				dateField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 24){
+		    				
+		    				numberField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 25){
+		    				
+		    				typeField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 26){
+		    				
+		    				injectField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 27){
+		    				
+		    				removeField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 28){
+		    				
+		    				fixTimeField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 29){
+		    				
+		    				fixRefField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 30){
+		    				
+		    				descriptionField3.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 31){
+		    				
+		    				projectField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 32){
+		    				
+		    				dateField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 33){
+		    				
+		    				numberField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 34){
+		    				
+		    				typeField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 35){
+		    				
+		    				injectField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 36){
+		    				
+		    				removeField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 37){
+		    				
+		    				fixTimeField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 38){
+		    				
+		    				fixRefField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 39){
+		    				
+		    				descriptionField4.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 40){
+		    				
+		    				projectField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 41){
+		    				
+		    				dateField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 42){
+		    				
+		    				numberField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 43){
+		    				
+		    				typeField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 44){
+		    				
+		    				injectField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 45){
+		    				
+		    				removeField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 46){
+		    				
+		    				fixTimeField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 47){
+		    				
+		    				fixRefField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 48){
+		    				descriptionField5.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 49){
+		    				projectField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 50){
+		    				dateField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 51){
+		    				numberField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 52){
+		    				typeField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 53){
+		    				injectField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 54){
+		    				;
+		    				removeField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 55){
+		    				
+		    				fixTimeField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 56){
+		    				
+		    				fixRefField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 57){
+		    				
+		    				descriptionField6.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 58){
+		    				
+		    				projectField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 59){
+		    				
+		    				dateField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 60){
+		    				
+		    				numberField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 61){
+		    				
+		    				typeField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 62){
+		    				
+		    				injectField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 63){
+		    				
+		    				removeField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 64){
+		    				
+		    				fixTimeField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 65){
+		    				
+		    				fixRefField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 66){
+		    				descriptionField7.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 67){
+		    				
+		    				projectField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 68){
+		    				
+		    				dateField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 69){
+		    				
+		    				numberField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 70){
+		    				
+		    				typeField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 71){
+		    				
+		    				injectField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 72){
+		    				
+		    				removeField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 73){
+		    				
+		    				fixTimeField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 74){
+		    				
+		    				fixRefField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 75){
+		    				descriptionField8.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 76){
+		    				
+		    				projectField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 77){
+		    				
+		    				dateField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 78){
+		    				
+		    				numberField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 79){
+		    				
+		    				typeField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 80){
+		    				
+		    				injectField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 81){
+		    				
+		    				removeField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 82){
+		    				
+		    				fixTimeField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 83){
+		    				
+		    				fixRefField9.setText(scanner.nextLine());
+		    			}
+		    			else if(counter == 84){
+		    				descriptionField9.setText(scanner.nextLine());
+		    			}
+		    			
+		    			}
+		    		}catch(Exception e){
+		    		e.printStackTrace();
+		    		}finally{
+		   
+		    		if(fReader != null)
+						try {
+							fReader.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+		    		}
+				
+				projectTitleField.updateUI();
+			}
+		});
+    	
+    		JLabel dateTitleLabel = new JLabel("Date:");
     	
     	dateTitleField = new JTextField();
     	dateTitleField.setColumns(10);
@@ -1560,6 +2063,1788 @@ public class PSPDefectRecording extends JPanel {
     	gbc_descriptionField9.gridy = 2;
     	defectPanel9.add(descriptionField9, gbc_descriptionField9);
     	GroupLayout groupLayout = new GroupLayout(this);
+    	
+    	fileName = "ProjectFiles/" + projectTitleField.getText() + ".txt";
+    	
+    	nameTitleField.addActionListener(new ActionListener(){ 
+    		@Override
+    		public void actionPerformed(ActionEvent e){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write(nameTitleField.getText());
+    					dateTitleField.requestFocus();
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	}); 
+    	
+    	dateTitleField.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateTitleField.getText());
+    					programNumField.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectTitleField.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectTitleField.getText());
+    					projectField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField1.getText());
+    					dateField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField1.getText());
+    					numberField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField1.getText());
+    					typeField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField1.getText());
+    					injectField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField1.getText());
+    					removeField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField1.getText());
+    					fixTimeField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField1.getText());
+    					fixRefField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField1.getText());
+    					descriptionField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField1.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField1.getText());
+    					projectField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField2.getText());
+    					dateField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField2.getText());
+    					numberField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField2.getText());
+    					typeField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField2.getText());
+    					injectField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField2.getText());
+    					removeField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField2.getText());
+    					fixTimeField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField2.getText());
+    					fixRefField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField2.getText());
+    					descriptionField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField2.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField2.getText());
+    					projectField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField3.getText());
+    					dateField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField3.getText());
+    					numberField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField3.getText());
+    					typeField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField3.getText());
+    					injectField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField3.getText());
+    					removeField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField3.getText());
+    					fixTimeField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField3.getText());
+    					fixRefField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField3.getText());
+    					descriptionField3.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField3.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField3.getText());
+    					projectField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField4.getText());
+    					dateField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField4.getText());
+    					numberField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField4.getText());
+    					typeField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField4.getText());
+    					injectField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField4.getText());
+    					removeField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField4.getText());
+    					fixTimeField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField4.getText());
+    					fixRefField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField4.getText());
+    					descriptionField4.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField4.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField4.getText());
+    					projectField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField5.getText());
+    					dateField1.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField5.getText());
+    					numberField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField5.getText());
+    					typeField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField5.getText());
+    					injectField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField5.getText());
+    					removeField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField5.getText());
+    					fixTimeField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField5.getText());
+    					fixRefField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField5.getText());
+    					descriptionField5.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField5.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField5.getText());
+    					projectField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField6.getText());
+    					dateField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField6.getText());
+    					numberField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField6.getText());
+    					typeField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField6.getText());
+    					injectField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField6.getText());
+    					removeField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField6.getText());
+    					fixTimeField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField6.getText());
+    					fixRefField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField6.getText());
+    					descriptionField6.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField6.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField6.getText());
+    					projectField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField7.getText());
+    					dateField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField7.getText());
+    					numberField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField7.getText());
+    					typeField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField7.getText());
+    					injectField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField7.getText());
+    					removeField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField7.getText());
+    					fixTimeField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField7.getText());
+    					fixRefField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField7.getText());
+    					descriptionField7.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField7.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField7.getText());
+    					projectField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField8.getText());
+    					dateField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField8.getText());
+    					numberField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField8.getText());
+    					typeField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField8.getText());
+    					injectField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField8.getText());
+    					removeField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField8.getText());
+    					fixTimeField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField8.getText());
+    					fixRefField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField8.getText());
+    					descriptionField8.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField8.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField8.getText());
+    					projectField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	projectField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + projectField9.getText());
+    					dateField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	dateField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + dateField9.getText());
+    					numberField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	numberField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + numberField9.getText());
+    					typeField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	typeField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + typeField9.getText());
+    					injectField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	injectField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + injectField9.getText());
+    					removeField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	removeField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + removeField9.getText());
+    					fixTimeField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixTimeField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixTimeField9.getText());
+    					fixRefField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	fixRefField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + fixRefField9.getText());
+    					descriptionField9.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	descriptionField9.addActionListener(new ActionListener(){
+    		@Override
+    		public void actionPerformed(ActionEvent a){
+    		
+    			try(FileWriter fw = new FileWriter(fileName, true);
+    				    BufferedWriter bw = new BufferedWriter(fw);
+    				    PrintWriter out = new PrintWriter(bw))
+    				{
+    					bw.write("\n" + descriptionField9.getText());
+    					projectField2.requestFocus();
+    				
+    				} catch (IOException ex) {
+    				    System.out.println(ex);
+    				}
+    		}   
+    	});
+    	
+    	try{
+    		fReader = new FileReader(fileName);
+    		BufferedReader bReader = new BufferedReader(fReader);
+    		StringBuffer string = new StringBuffer();
+    		
+    		File file = new File(fileName);
+    		Scanner scanner = new Scanner(file);
+    		
+    		while((line = bReader.readLine()) != null){
+    			counter++;
+    			if(counter == 1){
+    				nameTitleField.setText(scanner.nextLine());
+    			}
+    			else if(counter == 2){
+    				
+    				dateTitleField.setText(scanner.nextLine());
+    			}
+    			else if(counter == 3){
+    				
+    				programNumField.setText(scanner.nextLine());
+    			}
+    			else if(counter == 4){
+    				
+    				projectField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 5){
+    				
+    				dateField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 6){
+    				
+    				numberField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 7){
+    				
+    				typeField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 8){
+    				
+    				injectField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 9){
+    				
+    				removeField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 10){
+    				
+    				fixTimeField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 11){
+    				
+    				fixRefField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 12){
+    				
+    				descriptionField1.setText(scanner.nextLine());
+    			}
+    			else if(counter == 13){
+    				
+    				projectField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 14){
+    				
+    				dateField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 15){
+    				
+    				numberField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 16){
+    				
+    				typeField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 17){
+    				
+    				injectField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 18){
+    				
+    				removeField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 19){
+    				
+    				fixTimeField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 20){
+    				
+    				fixRefField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 21){
+    				
+    				descriptionField2.setText(scanner.nextLine());
+    			}
+    			else if(counter == 222){
+    				
+    				projectField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 23){
+    				
+    				dateField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 24){
+    				
+    				numberField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 25){
+    				
+    				typeField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 26){
+    				
+    				injectField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 27){
+    				
+    				removeField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 28){
+    				
+    				fixTimeField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 29){
+    				
+    				fixRefField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 30){
+    				
+    				descriptionField3.setText(scanner.nextLine());
+    			}
+    			else if(counter == 31){
+    				
+    				projectField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 32){
+    				
+    				dateField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 33){
+    				
+    				numberField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 34){
+    				
+    				typeField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 35){
+    				
+    				injectField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 36){
+    				
+    				removeField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 37){
+    				
+    				fixTimeField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 38){
+    				
+    				fixRefField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 39){
+    				
+    				descriptionField4.setText(scanner.nextLine());
+    			}
+    			else if(counter == 40){
+    				
+    				projectField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 41){
+    				
+    				dateField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 42){
+    				
+    				numberField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 43){
+    				
+    				typeField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 44){
+    				
+    				injectField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 45){
+    				
+    				removeField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 46){
+    				
+    				fixTimeField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 47){
+    				
+    				fixRefField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 48){
+    				descriptionField5.setText(scanner.nextLine());
+    			}
+    			else if(counter == 49){
+    				projectField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 50){
+    				dateField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 51){
+    				numberField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 52){
+    				typeField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 53){
+    				injectField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 54){
+    				;
+    				removeField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 55){
+    				
+    				fixTimeField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 56){
+    				
+    				fixRefField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 57){
+    				
+    				descriptionField6.setText(scanner.nextLine());
+    			}
+    			else if(counter == 58){
+    				
+    				projectField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 59){
+    				
+    				dateField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 60){
+    				
+    				numberField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 61){
+    				
+    				typeField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 62){
+    				
+    				injectField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 63){
+    				
+    				removeField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 64){
+    				
+    				fixTimeField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 65){
+    				
+    				fixRefField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 66){
+    				descriptionField7.setText(scanner.nextLine());
+    			}
+    			else if(counter == 67){
+    				
+    				projectField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 68){
+    				
+    				dateField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 69){
+    				
+    				numberField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 70){
+    				
+    				typeField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 71){
+    				
+    				injectField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 72){
+    				
+    				removeField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 73){
+    				
+    				fixTimeField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 74){
+    				
+    				fixRefField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 75){
+    				descriptionField8.setText(scanner.nextLine());
+    			}
+    			else if(counter == 76){
+    				
+    				projectField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 77){
+    				
+    				dateField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 78){
+    				
+    				numberField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 79){
+    				
+    				typeField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 80){
+    				
+    				injectField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 81){
+    				
+    				removeField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 82){
+    				
+    				fixTimeField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 83){
+    				
+    				fixRefField9.setText(scanner.nextLine());
+    			}
+    			else if(counter == 84){
+    				descriptionField9.setText(scanner.nextLine());
+    			}
+    			
+    			}
+    		}catch(Exception e){
+    		e.printStackTrace();
+    		}finally{
+   
+    		if(fReader != null)
+    			fReader.close();
+    		}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	groupLayout.setHorizontalGroup(
     		groupLayout.createParallelGroup(Alignment.LEADING)
     			.addGroup(groupLayout.createSequentialGroup()

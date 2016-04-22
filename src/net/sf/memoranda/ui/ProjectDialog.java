@@ -60,13 +60,14 @@ public class ProjectDialog extends JDialog {
     JPanel bottomPanel = new JPanel();
     JButton okButton = new JButton();
     JButton cancelButton = new JButton();
-    File fileDir = new File("ProjectFiles");
+    FileOutputStream is;
    
     public ProjectDialog(Frame frame, String title) {
         super(frame, title, true);
         try {
             jbInit();
             pack();
+            
         }
         catch(Exception ex) {
             new ExceptionDialog(ex);
@@ -217,14 +218,6 @@ public class ProjectDialog extends JDialog {
         gbc.anchor = GridBagConstraints.WEST;
         centerPanel.add(edButton, gbc);
         
-        
-        if(fileDir.exists() && fileDir.isDirectory()){
-        	
-        }
-        else{
-        	fileDir.mkdir();
-        }
-        
         bottomPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         okButton.setMaximumSize(new Dimension(100, 25));
         okButton.setMinimumSize(new Dimension(100, 25));
@@ -234,9 +227,8 @@ public class ProjectDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 okButton_actionPerformed(e);
                 try{
-                	
-                	File projectFile = new File(fileDir + "/" + prTitleField.getText() + ".txt");
-                	FileOutputStream is = new FileOutputStream(projectFile);
+                	File projectFile = new File("ProjectFiles/" + prTitleField.getText() + ".txt");
+                	is = new FileOutputStream(projectFile);
                 	
                 }catch(Exception ex){
                 	System.err.println("File Error");
