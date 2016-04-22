@@ -16,6 +16,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
+import java.io.Writer;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -61,7 +65,8 @@ public class ProjectDialog extends JDialog {
     JButton okButton = new JButton();
     JButton cancelButton = new JButton();
     File fileDir = new File("ProjectFiles");
-   
+    
+    
     public ProjectDialog(Frame frame, String title) {
         super(frame, title, true);
         try {
@@ -236,7 +241,11 @@ public class ProjectDialog extends JDialog {
                 try{
                 	
                 	File projectFile = new File(fileDir + "/" + prTitleField.getText() + ".txt");
+                	String absolutePath = projectFile.getAbsolutePath();
+                	System.out.println("HEEEEERRRRREEEE"+absolutePath);
                 	FileOutputStream is = new FileOutputStream(projectFile);
+                	OutputStreamWriter osw = new OutputStreamWriter(is);
+                	osw.write("Hello");
                 	
                 }catch(Exception ex){
                 	System.err.println("File Error");
