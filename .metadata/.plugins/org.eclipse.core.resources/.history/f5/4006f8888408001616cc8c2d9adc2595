@@ -2095,7 +2095,7 @@ public class PSPDefectRecording extends JPanel {
     								.addPreferredGap(ComponentPlacement.RELATED)
     								.addComponent(dateTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
     						.addGap(103)
-    						.addComponent(info, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE))
+    						.addComponent(info, GroupLayout.PREFERRED_SIZE, 497, GroupLayout.PREFERRED_SIZE))
     					.addComponent(defectPanel1, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
     					.addComponent(defectPanel2, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
     					.addComponent(defectPanel3, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)

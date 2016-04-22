@@ -2064,10 +2064,9 @@ public class PSPDefectRecording extends JPanel {
     	gbc_descriptionField9.gridy = 2;
     	defectPanel9.add(descriptionField9, gbc_descriptionField9);
     	
-    	JTextPane info = new JTextPane();
-    	info.setText("Please complete the form from left to right. Press the enter key after entering text in a box. "
-    			+ "If you do not want to enter anything in a box please enter \"-\" and press the enter key.");
-    	info.setEditable(false);
+    	JTextPane txtpnPleasePressEnter = new JTextPane();
+    	txtpnPleasePressEnter.setText("Please press the enter key after entering text in a box. If you do not want to enter anything in a box please enter \"-\" and press the enter key.");
+    	txtpnPleasePressEnter.setEditable(false);
     	GroupLayout groupLayout = new GroupLayout(this);
     	groupLayout.setHorizontalGroup(
     		groupLayout.createParallelGroup(Alignment.LEADING)
@@ -2093,9 +2092,9 @@ public class PSPDefectRecording extends JPanel {
     							.addGroup(groupLayout.createSequentialGroup()
     								.addComponent(dateTitleLabel)
     								.addPreferredGap(ComponentPlacement.RELATED)
-    								.addComponent(dateTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-    						.addGap(103)
-    						.addComponent(info, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE))
+    								.addComponent(dateTitleField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+    								.addGap(164)
+    								.addComponent(txtpnPleasePressEnter, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE))))
     					.addComponent(defectPanel1, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
     					.addComponent(defectPanel2, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
     					.addComponent(defectPanel3, GroupLayout.PREFERRED_SIZE, 1610, GroupLayout.PREFERRED_SIZE)
@@ -2126,8 +2125,8 @@ public class PSPDefectRecording extends JPanel {
     							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
     								.addComponent(programNumLabel)
     								.addComponent(programNumField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-    					.addComponent(info, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
-    				.addGap(18)
+    					.addComponent(txtpnPleasePressEnter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+    				.addPreferredGap(ComponentPlacement.RELATED)
     				.addComponent(defectPanel1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
     				.addPreferredGap(ComponentPlacement.RELATED)
     				.addComponent(defectPanel2, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
@@ -2183,7 +2182,7 @@ public class PSPDefectRecording extends JPanel {
     		}   
     	});
     	
-    	programNumField.addActionListener(new ActionListener(){
+    	projectTitleField.addActionListener(new ActionListener(){
     		@Override
     		public void actionPerformed(ActionEvent a){
     		
@@ -2191,7 +2190,7 @@ public class PSPDefectRecording extends JPanel {
     				    BufferedWriter bw = new BufferedWriter(fw);
     				    PrintWriter out = new PrintWriter(bw))
     				{
-    					bw.write("\n" + programNumField.getText());
+    					bw.write("\n" + projectTitleField.getText());
     					projectField1.requestFocus();
     				
     				} catch (IOException ex) {
@@ -2821,7 +2820,7 @@ public class PSPDefectRecording extends JPanel {
     				    PrintWriter out = new PrintWriter(bw))
     				{
     					bw.write("\n" + projectField5.getText());
-    					dateField5.requestFocus();
+    					dateField1.requestFocus();
     				
     				} catch (IOException ex) {
     				    System.out.println(ex);
